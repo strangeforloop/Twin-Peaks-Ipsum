@@ -30,6 +30,30 @@ let finalObj = { quotes: [] }
 let finalObjJSON
 let obj
 
+const quoteCleaner = quote => {
+  let quoteTextOnly = quote.replace(nameMatcherRegex, '')
+  return (quoteTextOnly = quoteTextOnly.trim())
+}
+
+const personCollector = quote => {
+  let personsRaw = quote.match(nameMatcherRegex)
+  personsRaw = personsRaw.map(el => el.replace(/\:./gm, ''))
+  const persons = [...new Set(personsRaw)] // remove duplicates as if a person said multiple lines he/she would present multiple times
+  return persons
+}
+
+// _English profane words and phrases retrieved from Luis von Ahn’s Research Group (Carnegie Mellon), url: https://www.cs.cmu.edu/~biglou/resources/bad-words.txt
+const profanityFilter = quoteTextOnly => {
+  let profanity = false
+  profanityMap.map(el => {
+    if (quoteTextOnly.match(el)) {
+      // console.log(`\n- [${i + 1}] "${quoteTextOnly.substring(0, 30)}" contains profanity: ${el}`)
+      profanity = true
+    }
+  })
+  return profanity
+}
+
 async function quoteCollector() {
   const browser = await puppeteer.launch({ headless: true })
   const page = await browser.newPage()
@@ -41,66 +65,72 @@ async function quoteCollector() {
     try {
       const quote = await page.evaluate(el => el.textContent, (await page.$$('dl'))[i])
 
-      const quoteCleaner = quote => {
-        let quoteTextOnly = quote.replace(nameMatcherRegex, '')
-        return (quoteTextOnly = quoteTextOnly.trim())
-      }
+      // Split quote into dialog by speaker
+      let quoteDialogArray = quote.split('\n');
 
-      const quoteTextOnly = quoteCleaner(quote)
+      // const quoteCleaner = quote => {
+      //   let quoteTextOnly = quote.replace(nameMatcherRegex, '')
+      //   return (quoteTextOnly = quoteTextOnly.trim())
+      // }
 
-      const personCollector = quote => {
-        let personsRaw = quote.match(nameMatcherRegex)
-        personsRaw = personsRaw.map(el => el.replace(/\:./gm, ''))
-        const persons = [...new Set(personsRaw)] // remove duplicates as if a person said multiple lines he/she would present multiple times
-        return persons
-      }
+      // const personCollector = quote => {
+      //   let personsRaw = quote.match(nameMatcherRegex)
+      //   personsRaw = personsRaw.map(el => el.replace(/\:./gm, ''))
+      //   const persons = [...new Set(personsRaw)] // remove duplicates as if a person said multiple lines he/she would present multiple times
+      //   return persons
+      // }
 
-      const persons = personCollector(quote)
+      // // _English profane words and phrases retrieved from Luis von Ahn’s Research Group (Carnegie Mellon), url: https://www.cs.cmu.edu/~biglou/resources/bad-words.txt
+      // const profanityFilter = quoteTextOnly => {
+      //   let profanity = false
+      //   profanityMap.map(el => {
+      //     if (quoteTextOnly.match(el)) {
+      //       console.log(`\n- [${i + 1}] "${quoteTextOnly.substring(0, 30)}" contains profanity: ${el}`)
+      //       profanity = true
+      //     }
+      //   })
+      //   return profanity
+      // }
 
-      // _English profane words and phrases retrieved from Luis von Ahn’s Research Group (Carnegie Mellon), url: https://www.cs.cmu.edu/~biglou/resources/bad-words.txt
-      const profanityFilter = quoteTextOnly => {
-        let profanity = false
-        profanityMap.map(el => {
-          if (quoteTextOnly.match(el)) {
-            console.log(`\n- [${i + 1}] "${quoteTextOnly.substring(0, 30)}" contains profanity: ${el}`)
-            profanity = true
+      for (let j = 0; j < quoteDialogArray.length; j++) {
+
+        const quoteTextOnly = quoteCleaner(quoteDialogArray[j])
+
+        const persons = personCollector(quoteDialogArray[j])
+
+        const profanity = profanityFilter(quoteTextOnly)
+
+        // const relevanceDecider = quoteTextOnly => {
+        //   let relevance = 1
+        //   if (quoteTextOnly.length > 380 || persons.length > 2 || quoteTextOnly.match(/\[.+\]/gm)) {
+        //     console.log(`\n- [${i + 1}] relevance is sorted to "2"`)
+        //     relevance = 2
+        //   }
+        //   if (quoteTextOnly.length > 900 || persons.length > 3) {
+        //     console.log(`\n- [${i + 1}] relevance is sorted to "3"`)
+        //     relevance = 3 // https://www.youtube.com/watch?v=0P_HKQGq730
+        //   }
+        //   return relevance
+        // }
+
+        // const relevance = relevanceDecider(quoteTextOnly)
+
+        obj = {
+          id: i + 1,
+          quoteText: quote,
+          quoteTextOnly: quoteTextOnly,
+          persons: persons,
+          profanity: profanity,
+          // relevance: relevance,
+          copyright: {
+            license: 'CC-BY-SA 3.0.',
+            licenseDetails: 'https://creativecommons.org/licenses/by-sa/3.0/',
+            source: 'https://en.wikiquote.org/wiki/Twin_Peaks'
           }
-        })
-        return profanity
-      }
-
-      const profanity = profanityFilter(quoteTextOnly)
-
-      const relevanceDecider = quoteTextOnly => {
-        let relevance = 1
-        if (quoteTextOnly.length > 380 || persons.length > 2 || quoteTextOnly.match(/\[.+\]/gm)) {
-          console.log(`\n- [${i + 1}] relevance is sorted to "2"`)
-          relevance = 2
         }
-        if (quoteTextOnly.length > 900 || persons.length > 3) {
-          console.log(`\n- [${i + 1}] relevance is sorted to "3"`)
-          relevance = 3 // https://www.youtube.com/watch?v=0P_HKQGq730
-        }
-        return relevance
+
+        finalObj.quotes.push(obj)
       }
-
-      const relevance = relevanceDecider(quoteTextOnly)
-
-      obj = {
-        id: i + 1,
-        quoteText: quote,
-        quoteTextOnly: quoteTextOnly,
-        persons: persons,
-        profanity: profanity,
-        relevance: relevance,
-        copyright: {
-          license: 'CC-BY-SA 3.0.',
-          licenseDetails: 'https://creativecommons.org/licenses/by-sa/3.0/',
-          source: 'https://en.wikiquote.org/wiki/Twin_Peaks'
-        }
-      }
-
-      finalObj.quotes.push(obj)
     } catch (e) {
       console.error(e)
     }

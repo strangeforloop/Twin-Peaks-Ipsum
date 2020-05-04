@@ -29,19 +29,24 @@ const twinpeaks = require('./twinpeaksQuotes.json')
 // random number from the available IDs
 const randomizer = quotesArray => {
   const quotesLength = twinpeaks.quotes.length
+
   const randomizeNumberBetweenZeroAnd = max => {
     return Math.floor(Math.random() * Math.floor(max))
   }
+  
   const availableIdChecker = quotesArray => {
     const availableIds = quotesArray.map(el => el.id)
     return availableIds
   }
+  
   const availableIds = availableIdChecker(quotesArray)
   let randomInteger = randomizeNumberBetweenZeroAnd(quotesLength)
+  
   while (!availableIds.includes(randomInteger)) {
     // console.log(`${randomInteger} is not among ${availableIds}`)
     randomInteger = randomizeNumberBetweenZeroAnd(quotesLength)
   }
+  
   return randomInteger
 }
 

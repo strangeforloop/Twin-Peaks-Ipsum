@@ -36,6 +36,7 @@ function endpointCreation() {
 
     // providing endpoint for **random** quotes
     app.get('/api/1/quotes/recommend', (req, res) => {
+      console.log('what');
       const recommendedResult = recommend(req.query.profanity, req.query.relevance)
       recommendedResult[0] ? res.json(recommendedResult) : res.status(404).json({ error: 'no such id!' }) // this condition won't be applied, error handling happens in randomizer()
       console.log(
@@ -49,12 +50,14 @@ function endpointCreation() {
     app.get('/api/1/quotes/:id', (req, res) => {
       const id = req.params.id
       const idResult = getId(id)
+      console.log('id ', id);
+      console.log('idResult', idResult);
       idResult[0] ? res.json(idResult) : res.status(404).json({ error: 'no such id!' })
       console.log(`/api/1/quotes/${id} endpoint has been called!`)
     })
 
     // providing a dynamic endpoint for searches
-    app.get('/api/1/quotes', (req, res) => {
+    app.get('/api/quotes', (req, res) => {
       const query = req.query.q
       const personResult = search(query)
       res.json(personResult)
