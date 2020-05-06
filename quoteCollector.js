@@ -37,6 +37,9 @@ const quoteCleaner = quote => {
 
 const personCollector = quote => {
   let personsRaw = quote.match(nameMatcherRegex)
+  if (personsRaw === null) {
+    return null;
+  }
   personsRaw = personsRaw.map(el => el.replace(/\:./gm, ''))
   const persons = [...new Set(personsRaw)] // remove duplicates as if a person said multiple lines he/she would present multiple times
   return persons
@@ -60,37 +63,14 @@ async function quoteCollector() {
 
   await page.goto('https://en.wikiquote.org/wiki/Twin_Peaks')
   const quoteLength = await page.$$eval('dl', el => el.length)
+  let idCount = 0;
 
   for (let i = 0; i < quoteLength; i++) {
     try {
       const quote = await page.evaluate(el => el.textContent, (await page.$$('dl'))[i])
 
       // Split quote into dialog by speaker
-      let quoteDialogArray = quote.split('\n');
-
-      // const quoteCleaner = quote => {
-      //   let quoteTextOnly = quote.replace(nameMatcherRegex, '')
-      //   return (quoteTextOnly = quoteTextOnly.trim())
-      // }
-
-      // const personCollector = quote => {
-      //   let personsRaw = quote.match(nameMatcherRegex)
-      //   personsRaw = personsRaw.map(el => el.replace(/\:./gm, ''))
-      //   const persons = [...new Set(personsRaw)] // remove duplicates as if a person said multiple lines he/she would present multiple times
-      //   return persons
-      // }
-
-      // // _English profane words and phrases retrieved from Luis von Ahn’s Research Group (Carnegie Mellon), url: https://www.cs.cmu.edu/~biglou/resources/bad-words.txt
-      // const profanityFilter = quoteTextOnly => {
-      //   let profanity = false
-      //   profanityMap.map(el => {
-      //     if (quoteTextOnly.match(el)) {
-      //       console.log(`\n- [${i + 1}] "${quoteTextOnly.substring(0, 30)}" contains profanity: ${el}`)
-      //       profanity = true
-      //     }
-      //   })
-      //   return profanity
-      // }
+      let quoteDialogArray = quote.split('\n')
 
       for (let j = 0; j < quoteDialogArray.length; j++) {
 
@@ -98,38 +78,31 @@ async function quoteCollector() {
 
         const persons = personCollector(quoteDialogArray[j])
 
-        const profanity = profanityFilter(quoteTextOnly)
+        // make a new object for each sentence in quoteTextOnly
+        // split quoteTextOnly into sentences
+        let sentences = quoteTextOnly.replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|")
 
-        // const relevanceDecider = quoteTextOnly => {
-        //   let relevance = 1
-        //   if (quoteTextOnly.length > 380 || persons.length > 2 || quoteTextOnly.match(/\[.+\]/gm)) {
-        //     console.log(`\n- [${i + 1}] relevance is sorted to "2"`)
-        //     relevance = 2
-        //   }
-        //   if (quoteTextOnly.length > 900 || persons.length > 3) {
-        //     console.log(`\n- [${i + 1}] relevance is sorted to "3"`)
-        //     relevance = 3 // https://www.youtube.com/watch?v=0P_HKQGq730
-        //   }
-        //   return relevance
-        // }
+        for (let k = 0; k < sentences.length; k++) {
+          const profanity = profanityFilter(sentences[k])
 
-        // const relevance = relevanceDecider(quoteTextOnly)
-
-        obj = {
-          id: i + 1,
-          quoteText: quote,
-          quoteTextOnly: quoteTextOnly,
-          persons: persons,
-          profanity: profanity,
-          // relevance: relevance,
-          copyright: {
-            license: 'CC-BY-SA 3.0.',
-            licenseDetails: 'https://creativecommons.org/licenses/by-sa/3.0/',
-            source: 'https://en.wikiquote.org/wiki/Twin_Peaks'
+          obj = {
+            id: idCount + 1,
+            quoteText: quote,
+            quoteTextOnly: sentences[k],
+            persons: persons,
+            profanity: profanity,
+            // relevance: relevance,
+            copyright: {
+              license: 'CC-BY-SA 3.0.',
+              licenseDetails: 'https://creativecommons.org/licenses/by-sa/3.0/',
+              source: 'https://en.wikiquote.org/wiki/Twin_Peaks'
+            }
           }
-        }
 
-        finalObj.quotes.push(obj)
+          finalObj.quotes.push(obj);
+
+          idCount++;
+        }
       }
     } catch (e) {
       console.error(e)

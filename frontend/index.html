@@ -5,20 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Twin Peaks Lorem Ipsum</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="wrapper">
+  <div class="wrapper" id="test">
     <h1>Twin Peaks Lorem Ipsum</h1>
 
     <div class="words-sentences-container">
-      <input type="radio" id="sentences" name="words-sent-toggle" value="sentences" checked="checked" />
-      <label for="sentences" class="left">Paragraphs</label>
-      <input type="radio" id="words" name="words-sent-toggle" value="words" />
+      <input type="radio" id="paragraphs" name="lorem-type" value="paragraphs" checked="checked" />
+      <label for="paragraphs" class="left">Paragraphs</label>
+      
+      <input type="radio" id="words" name="lorem-type" value="words" />
       <label for="words" class="right">Words</label>
     </div>
     <div class="controls-container">
-      <input type="number" id="number-ipsum" class="text-input" placeholder="paragraphs" value="5" />
-      <button class="generate-ipsum">Generate text</button>
+      <input type="number" id="number-ipsum" class="text-input" placeholder="paragraphs" value="3" />
+      <button class="generate-ipsum" id="generate-ipsum">Generate text</button>
     </div>
     <!-- <div class="language-container">
       <input type="radio" id="commonTongue" name="language-toggle" value="commonTongue" checked="checked" />
@@ -29,11 +31,11 @@
       <label for="dothraki">Dothraki</label>
     </div> -->
     <div class="language-container">
-      <input type="checkbox" id="includeProfanity" name="language-toggle" value="includeProfanity" />
-        <label for="includeProfanity" class="left">Include Profanity</label>
+      <input type="checkbox" id="remove-profanity" name="language-toggle" />
+        <label for="includeProfanity" class="left">Remove Profanity</label>
     </div>
     
-    <section class="output-ipsum">testing</section>
+    <section class="output-ipsum" id="output-ipsum">Output here</section>
   </div>
 <script src="script.js"></script>
 </body>

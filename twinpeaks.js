@@ -1,53 +1,30 @@
-/*
-MIT License
+'use strict';
 
-Copyright (c) 2019 David Barton (theDavidBarton)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
-
-'use strict'
-
-const twinpeaks = require('./twinpeaksQuotes.json')
+const twinpeaks = require('./twinpeaksQuotes.json');
+const twinpeaksWords = require('./twinpeaksWords.json');
 
 // random number from the available IDs
 const randomizer = quotesArray => {
-  const quotesLength = twinpeaks.quotes.length
+  const quotesLength = twinpeaks.quotes.length;
 
   const randomizeNumberBetweenZeroAnd = max => {
-    return Math.floor(Math.random() * Math.floor(max))
+    return Math.floor(Math.random() * Math.floor(max));
   }
-  
+
   const availableIdChecker = quotesArray => {
-    const availableIds = quotesArray.map(el => el.id)
-    return availableIds
+    const availableIds = quotesArray.map(el => el.id);
+    return availableIds;
   }
-  
-  const availableIds = availableIdChecker(quotesArray)
-  let randomInteger = randomizeNumberBetweenZeroAnd(quotesLength)
-  
+
+  const availableIds = availableIdChecker(quotesArray);
+  let randomInteger = randomizeNumberBetweenZeroAnd(quotesLength);
+
   while (!availableIds.includes(randomInteger)) {
     // console.log(`${randomInteger} is not among ${availableIds}`)
-    randomInteger = randomizeNumberBetweenZeroAnd(quotesLength)
+    randomInteger = randomizeNumberBetweenZeroAnd(quotesLength);
   }
-  
-  return randomInteger
+
+  return randomInteger;
 }
 
 // recommend a quote randomly
@@ -59,38 +36,85 @@ const randomizer = quotesArray => {
  */
 
 const recommend = (profanity, relevance) => {
-  const twinpeaksQuotesArray = twinpeaks.quotes
-  const profValue = profanity && profanity.match(/^(true|false)$/) ? profanity : 'true,false'
-  const relValue = relevance && relevance.match(/^(1|2|3|1,2|2,3|1,3|1,2,3)$/) ? relevance : '1,2,3'
+  const twinpeaksQuotesArray = twinpeaks.quotes;
+  const profValue = profanity && profanity.match(/^(true|false)$/) ? profanity : 'true,false';
+  const relValue = relevance && relevance.match(/^(1|2|3|1,2|2,3|1,3|1,2,3)$/) ? relevance : '1,2,3';
 
   const queriedArray = twinpeaksQuotesArray.filter(quote => {
-    const profanityRegex = RegExp(quote.profanity, 'g')
-    const relevanceRegex = RegExp(quote.relevance, 'g')
-    if (profValue.match(profanityRegex) && relValue.match(relevanceRegex)) return quote
+    const profanityRegex = RegExp(quote.profanity, 'g');
+    const relevanceRegex = RegExp(quote.relevance, 'g');
+    if (profValue.match(profanityRegex) && relValue.match(relevanceRegex)) return quote;
   })
 
   const randomId = randomizer(queriedArray)
   const recommendedResult = queriedArray.filter(quote => {
-    if (quote.id == randomId) return quote
+    if (quote.id == randomId) return quote;
   })
-  return recommendedResult
+  return recommendedResult;
 }
 
 // get quote by its ID
 const getId = id => {
   const idResult = twinpeaks.quotes.filter(quote => {
-    if (quote.id == id) return quote
+    if (quote.id == id) return quote;
   })
-  return idResult
+  return idResult;
 }
 
 // searches based on string query
 const search = query => {
-  const queryRegex = RegExp(query, 'gi')
+  const queryRegex = RegExp(query, 'gi');
   const personResult = twinpeaks.quotes.filter(quote => {
-    if (queryRegex.test(quote.quoteText)) return quote
+    if (queryRegex.test(quote.quoteText)) return quote;
   })
-  return personResult
+  return personResult;
 }
 
-module.exports = { recommend, getId, search }
+const getWords = (numberOfWords, profanity) => {
+  // return twinpeaksWords[0].content;
+  return 'hi';
+}
+
+const getParagraphs = (numberOfParagraphs, profanity) => {
+  // initialize an empty array for paragraphs
+  // for i to numberOfParagraphs
+    // create an empty paragraph
+    // get a random number of sentences between the average 
+    // num of sentences per paragraph
+    // for i to numberOfSentences
+      // append result of getSentence() to current paragraph
+  let paragraphArray = [];
+
+  for (let i = 0; i < numberOfParagraphs; i++) {
+    let paragraph = '';
+    const numOfSentences = Math.floor((Math.random() * (14 - 8)) + 8);;
+    for (let i = 0; i < numOfSentences; i++) {
+      // replace w template literals
+      paragraph += getSentence(profanity) + ' ';
+    }
+    paragraphArray.push(paragraph);
+  }
+  // console.log('Paragraph Array: ', paragraphArray);
+  return paragraphArray;
+}
+
+const getSentence = (profanity) => {
+  const twinpeaksQuotesArray = twinpeaks.quotes;
+  let randomIndex = Math.floor((Math.random() * (twinpeaksQuotesArray.length - 0)) + 0);
+  let quote = twinpeaks.quotes[randomIndex];
+
+  // console.log(profanity);
+  if (!profanity) {
+    // console.log('hey');
+    while (quote.profanity) {
+      randomIndex = Math.floor((Math.random() * (twinpeaksQuotesArray.length - 0)) + 0);
+      quote = twinpeaks.quotes[randomIndex];
+    }
+  }
+
+  const sentence = quote.quoteTextOnly;
+  // console.log('Sentence: ', sentence);
+  return sentence;
+}
+
+module.exports = { recommend, getId, search, getParagraphs, getWords }

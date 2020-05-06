@@ -1,0 +1,302 @@
+[
+  {
+    "id": 0,
+    "content": "BOB",
+    "wordCount": 1
+  },
+  {
+    "id": 1,
+    "content": "The Bookhouse Boys",
+    "wordCount": 3
+  },
+  {
+    "id": 2,
+    "content": "Coffee",
+    "wordCount": 1
+  },
+  {
+    "id": 3,
+    "content": "Special Agent Gordon Cole",
+    "wordCount": 4
+  },
+  {
+    "id": 4,
+    "content": "Special Agent Dale Cooper",
+    "wordCount": 4
+  },
+  {
+    "id": 5,
+    "content": "The Giant",
+    "wordCount": 2
+  },
+  {
+    "id": 6,
+    "content": "Fire Walk With Me",
+    "wordCount": 4
+  },
+  {
+    "id": 7,
+    "content": "Audrey",
+    "wordCount": 1
+  },
+  {
+    "id": 8,
+    "content": "Audrey Horne",
+    "wordCount": 2
+  },
+  {
+    "id": 9,
+    "content": "Dr. Jacoby",
+    "wordCount": 2
+  },
+  {
+    "id": 10,
+    "content": "the owls are not what they seem",
+    "wordCount": 7
+  },
+  {
+    "id": 11,
+    "content": "cherry pie",
+    "wordCount": 1
+  },
+  {
+    "id": 12,
+    "content": "red room",
+    "wordCount": 2
+  },
+  {
+    "id": 13,
+    "content": "David Lynch",
+    "wordCount": 2
+  },
+  {
+    "id": 14,
+    "content": "The Man From Another Place",
+    "wordCount": 5
+  },
+  {
+    "id": 15,
+    "content": "sheriff",
+    "wordCount": 1
+  },
+  {
+    "id": 16,
+    "content": "black lodge",
+    "wordCount": 2
+  },
+  {
+    "id": 17,
+    "content": "Double R Diner",
+    "wordCount": 3
+  },
+  {
+    "id": 18,
+    "content": "electricity",
+    "wordCount": 1
+  },
+  {
+    "id": 19,
+    "content": "garmonbozia",
+    "wordCount": 1
+  },
+  {
+    "id": 20,
+    "content": "The Arm",
+    "wordCount": 2
+  },
+  {
+    "id": 21,
+    "content": "Josie Packard",
+    "wordCount": 2
+  },
+  {
+    "id": 22,
+    "content": "glass box",
+    "wordCount": 2
+  },
+  {
+    "id": 23,
+    "content": "black symbol",
+    "wordCount": 2
+  },
+  {
+    "id": 24,
+    "content": "utility pole",
+    "wordCount": 2
+  },
+  {
+    "id": 25,
+    "content": "Dougie's ring",
+    "wordCount": 2
+  },
+  {
+    "id": 26,
+    "content": "framed picture",
+    "wordCount": 2
+  },
+  {
+    "id": 27,
+    "content": "white lodge",
+    "wordCount": 2
+  },
+  {
+    "id": 28,
+    "content": "roadhouse",
+    "wordCount": 1
+  },
+  {
+    "id": 29,
+    "content": "One Eyed Jacks",
+    "wordCount": 3
+  },
+  {
+    "id": 30,
+    "content": "convenience store",
+    "wordCount": 2
+  },
+  {
+    "id": 31,
+    "content": "abandoned gas station",
+    "wordCount": 3
+  },
+  {
+    "id": 32,
+    "content": "creamed corn",
+    "wordCount": 2
+  },
+  {
+    "id": 33,
+    "content": "log",
+    "wordCount": 1
+  },
+  {
+    "id": 34,
+    "content": "opera house",
+    "wordCount": 2
+  },
+  {
+    "id": 35,
+    "content": "Brigg's house",
+    "wordCount": 2
+  },
+  {
+    "id": 36,
+    "content": "Judy",
+    "wordCount": 1
+  },
+  {
+    "id": 37,
+    "content": "Fat Trout Trailer Park",
+    "wordCount": 4
+  },
+  {
+    "id": 38,
+    "content": "Silver Mustang Casino",
+    "wordCount": 3
+  },
+  {
+    "id": 39,
+    "content": "South Dakota",
+    "wordCount": 2
+  },
+  {
+    "id": 40,
+    "content": "The Dutchman's Lodge",
+    "wordCount": 3
+  },
+  {
+    "id": 41,
+    "content": "pale horse",
+    "wordCount": 2
+  },
+  {
+    "id": 42,
+    "content": "blue rose",
+    "wordCount": 2
+  },
+  {
+    "id": 43,
+    "content": "slot machine",
+    "wordCount": 2
+  },
+  {
+    "id": 44,
+    "content": "sycamore trees",
+    "wordCount": 2
+  },
+  {
+    "id": 45,
+    "content": "in 25 years",
+    "wordCount": 3
+  },
+  {
+    "id": 46,
+    "content": "meanwhile",
+    "wordCount": 1
+  },
+  {
+    "id": 47,
+    "content": "Badalamenti",
+    "wordCount": 1
+  },
+  {
+    "id": 48,
+    "content": 1,
+    "wordCount": 1
+  },
+  {
+    "id": 49,
+    "content": "Lucky 7 Insurance",
+    "wordCount": 3
+  },
+  {
+    "id": 50,
+    "content": "The Return",
+    "wordCount": 1
+  },
+  {
+    "id": 51,
+    "content": "Log Lady",
+    "wordCount": 2
+  },
+  {
+    "id": 52,
+    "content": "fork in electrical socket",
+    "wordCount": 4
+  },
+  {
+    "id": 53,
+    "content": "helloooooooo",
+    "wordCount": 1
+  },
+  {
+    "id": 54,
+    "content": "Bobby Briggs",
+    "wordCount": 2
+  },
+  {
+    "id": 55,
+    "content": "James Hurley",
+    "wordCount": 2
+  },
+  {
+    "id": 56,
+    "content": "Sheriff Harry S. Truman",
+    "wordCount": 4
+  },
+  {
+    "id": 57,
+    "content": "waterfall",
+    "wordCount": 1
+  },
+  {
+    "id": 58,
+    "content": "tree",
+    "wordCount": 1
+  },
+  {
+    "id": 59,
+    "content": "secret diary",
+    "wordCount": 2
+  }
+]
