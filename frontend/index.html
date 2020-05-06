@@ -5,36 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Twin Peaks Lorem Ipsum</title>
+  <link href="https://fonts.googleapis.com/css2?family=Markazi+Text:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="wrapper" id="test">
-    <h1>Twin Peaks Lorem Ipsum</h1>
+    <nav>
+      <ul class="nav-content">
+        <li><a href="#"></a>Home</li>
+        <li><a href="#"></a>Api</li>
+        <li><a href="#"></a>Github</li>
+        <li><a href="#"></a>About</li>
+      </ul>
+    </nav>
+    <h1>Twin Peaks</h1>
+    <h1>Lorem Ipsum</h1>
 
-    <div class="words-sentences-container">
+    <div class="tabs">
       <input type="radio" id="paragraphs" name="lorem-type" value="paragraphs" checked="checked" />
-      <label for="paragraphs" class="left">Paragraphs</label>
+      <label data-tab-target="#paragraphs-controls" for="paragraphs" class="left">Paragraphs</label>
       
       <input type="radio" id="words" name="lorem-type" value="words" />
-      <label for="words" class="right">Words</label>
+      <label data-tab-target="#words-controls" for="words" class="right">Words</label>
     </div>
-    <div class="controls-container">
-      <input type="number" id="number-ipsum" class="text-input" placeholder="paragraphs" value="3" />
-      <button class="generate-ipsum" id="generate-ipsum">Generate text</button>
-    </div>
-    <!-- <div class="language-container">
-      <input type="radio" id="commonTongue" name="language-toggle" value="commonTongue" checked="checked" />
-      <label for="commonTongue">Common tongue</label>
-      <input type="radio" id="highValyrian" name="language-toggle" value="highValyrian" />
-      <label for="highValyrian">High Valyrian</label>
-      <input type="radio" id="dothraki" name="language-toggle" value="dothraki" />
-      <label for="dothraki">Dothraki</label>
-    </div> -->
-    <div class="language-container">
-      <input type="checkbox" id="remove-profanity" name="language-toggle" />
-        <label for="includeProfanity" class="left">Remove Profanity</label>
-    </div>
+
+    <div class="tabs-content">
+      <div id="paragraphs-controls" data-tab-content class="paragraphs-controls active">
+        <input type="number" id="number-ipsum" class="text-input" placeholder="paragraphs" value="3" />
     
+        <!-- <div class="latin-container">
+          <input type="checkbox" id="include-latin" name="include-latin-toggle" />
+          <label for="include-latin-toggle" class="left">Start with "Twin Peaks ipsum dolor sit amet"</label>
+        </div> -->
+
+        <div class="profanity-container">
+          <input type="checkbox" id="remove-profanity" name="profanity-toggle" />
+          <label for="profanity-toggle" class="left">Remove Profanity</label>
+        </div>
+      </div>
+
+      <div id="words-controls" data-tab-content class="words-controls">
+        <input type="number" id="number-ipsum" class="text-input" placeholder="paragraphs" value="3" />
+      </div>
+      <button class="generate-ipsum" id="generate-ipsum">Generate text</button>
+    </div>    
     <section class="output-ipsum" id="output-ipsum">Output here</section>
   </div>
 <script src="script.js"></script>

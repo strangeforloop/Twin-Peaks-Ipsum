@@ -4,3 +4,44 @@
   box-sizing: border-box;
 }
 
+/* Navigation */
+.nav-content {
+  display: flex;
+  list-style: none;
+}
+
+.nav-content li {
+  margin-right: 1rem;
+}
+
+[data-tab-content] {
+  display: none;
+}
+
+/* Heading */
+h1 {
+  font-family: 'Markazi Text', serif;
+  text-transform: uppercase;
+}
+
+.active[data-tab-content] {
+  display: block;
+}
+
+input[type="radio"] {
+  visibility: hidden;
+  width: 0;
+}
+
+input[type="radio"]:checked + label {
+  background-color: deeppink;
+  color: white;
+}
+
+/* Output */
+.output-ipsum {
+  padding: 0.5rem;
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+}
