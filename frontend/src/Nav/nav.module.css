@@ -1,0 +1,23 @@
+.navContent {
+  width: 80%;
+  margin: 1rem auto;
+  display: flex;
+  list-style: none;
+}
+
+.navLink {
+  margin-right: 1rem;
+  text-decoration: none;
+  padding: 2.5px 6px;
+  /* background: yellow; */
+  color: deeppink;
+  font-weight: 500;
+}
+
+.navLink:hover {
+  /* animation of sorts */
+}
+
+.navLink:visited {
+  color: darkviolet;
+}

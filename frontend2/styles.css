@@ -14,6 +14,13 @@
   margin-right: 1rem;
 }
 
+/* Tabs */
+.tabs {
+  margin-bottom: 10px;
+  display: inline-flex;
+  justify-content: center;
+}
+
 [data-tab-content] {
   display: none;
 }
@@ -36,6 +43,18 @@ input[type="radio"] {
 input[type="radio"]:checked + label {
   background-color: deeppink;
   color: white;
+}
+
+.button {
+  font-size: 1rem;
+  border: 1px solid deeppink;
+  border-left: 0;
+  padding: 8px;
+  display: block;
+  text-align: center;
+  width: 150px;
+  color: deeppink;
+  cursor: pointer;
 }
 
 /* Output */

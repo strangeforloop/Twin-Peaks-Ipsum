@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Slab:wght@900&display=swap'); */
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Tabs */
+.tabs {
+  margin-bottom: 10px;
+  display: inline-flex;
+  justify-content: center;
+}
+
+
+
+.tabs label:first-child {
+  /* ???????? note selecting */
+  border-radius: 10px 0 0 10px;
+}
+
+input[type="radio"] + label:first-child  {
+  border-radius: 10px 0 0 10px;
+}
+
+input[type="radio"] + label:last-child  {
+  border-radius: 0 10px 10px 0;
+}
+
+/* .tabs label:last-child {
+  border-radius: 0 10px 10px 0;
+} */
+
+[data-tab-content] {
+  display: none;
+}
+
+/* Heading */
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 2.3rem;
+  margin-bottom: 0.5rem;
+	text-shadow: -1px 1px 0 lightsalmon,
+				        1px 1px 0 lightsalmon,
+				        1px -1px 0 lightsalmon,
+				       -1px -1px 0 lightsalmon;
+}
+
+header p {
+  font-size: 1.2rem;
+}
+
+input[type="radio"] {
+  visibility: hidden;
+  width: 0;
+}
+
+form {
+    margin: 0 auto;
+    /* width: 400px; */
+    max-width: 800px;
+    text-align: center;  
+}
+
+input[type="radio"]:checked + label {
+  background-color: deeppink;
+  color: white;
+}
+
+.active[data-tab-content] {
+  display: block;
+}
+
+.numberInput {
+  padding: 9px;
+  margin-bottom: 0.5rem
+}
+
+.profanityContainer {
+  margin-bottom: 0.5rem;
+}
+
+.profanityContainer .profanityToggle {
+  width: 18px;
+  height: 18px;
+}
+
+.profanityContainer label {
+  font-size: 1.1rem;
+  margin-left: 0.25rem;
+}
+
+.button {
+  font-size: 1rem;
+  border: 1px solid deeppink;
+  /* border-left: 0; */
+  padding: 8px;
+  display: block;
+  text-align: center;
+  width: 150px;
+  color: deeppink;
+  cursor: pointer;
+}
+
+.generateText {
+  display: inline-block;
+  background: deeppink;
+  color: white;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+}
+
+/* Output */
+.outputIpsum {
+  text-align: left;
+  padding: 0.8rem;
+  /* width: 100%; */
+  margin: 0 auto;
+  min-height: 300px;
+  border: 1px solid black;
+}
+
+.outputIpsum p {
+  /* because react is weird with new lines */
+  white-space: pre-wrap;
+}
