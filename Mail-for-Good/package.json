@@ -58,7 +58,7 @@
     "express": "^4.15.3",
     "express-session": "^1.15.3",
     "geoip-lite": "^1.2.1",
-    "handlebars": "^4.0.10",
+    "handlebars": "^4.3.0",
     "helmet": "^3.6.1",
     "highcharts": "^5.0.6",
     "jquery": "^3.2.1",
