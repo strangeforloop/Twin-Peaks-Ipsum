@@ -100,88 +100,95 @@ const Home = () => {
   }
 
   return (
-    <div className={styles.home}>
-      <div className={styles.hero}>
-        <img src="/assets/SVG/clouds_left.svg" alt="clouds" className={styles.leftClouds}></img>
-        <img src="/assets/SVG/clouds_right.svg" alt="clouds" className={styles.rightClouds}></img>
-        <div className={styles.heroContent}>
-          <img src="/assets/SVG/mountains.svg" alt="twin peaks mountains" className={styles.mountains}></img>
-          <div className={styles.heroText}>
-            <h1>Twin Peaks
-            <span style={{ display: 'block' }}>Lorem Ipsum</span>
-            </h1>
-            <p className={styles.visitorCount}>Vistors: 51,201</p>
-            <p>The text is not what it seems...
-          </p>
+    <div className={styles.page}>
+    {/* I want the home box to not grow */}
+      <div className={styles.home}>
+        <div className={styles.hero}>
+          <img src="/assets/SVG/clouds_left.svg" alt="clouds" className={styles.leftClouds}></img>
+          <img src="/assets/SVG/clouds_right.svg" alt="clouds" className={styles.rightClouds}></img>
+          <div className={styles.heroContent}>
+            <img src="/assets/SVG/mountains.svg" alt="twin peaks mountains" className={styles.mountains}></img>
+            <div className={styles.heroText}>
+              <h1>Twin Peaks
+              <span style={{ display: 'block' }}>Lorem Ipsum</span>
+              </h1>
+              <p className={styles.visitorCount}>Vistors: 51,201</p>
+              <p className={styles.infoText}>The text is not what it seems. Choose between a random selection of dialog from the show or Twin Peaks words.
+            </p>
+            </div>
           </div>
         </div>
-      </div>
-      <form onSubmit={generateText}>
-        <div className={styles.tabs}>
-          <input 
-            type="radio" 
-            name="lorem-type" 
-            onChange={handleLoremToggle} 
-            id="paragraphs" 
-            value="paragraphs"
-            checked="checked" 
-          />
-          <label data-tab-target="#paragraphs-controls" for="paragraphs" className={styles.button}>Paragraphs</label>
-          <input 
-            type="radio" 
-            name="lorem-type" 
-            onChange={handleLoremToggle}
-            id="words"
-            value="words" 
-          />
-          <label data-tab-target="#words-controls" for="words" className={styles.button}>Words</label>
-        </div>
-
-        <div className="tabs-content">
-          <div id="paragraphs-controls" data-tab-content className={`${styles.paragraphControls} ${styles.active}`}>
+        <form onSubmit={generateText}>
+          <div className={styles.tabs}>
             <input 
-              type="number" 
-              id="number-ipsum" 
-              className={styles.numberInput}
-              onChange={handleNumberInput} 
-              value={numberToGenerate} 
+              type="radio" 
+              name="lorem-type" 
+              onChange={handleLoremToggle} 
+              id="paragraphs" 
+              value="paragraphs"
+              checked="checked" 
             />
+            <label data-tab-target="#paragraphs-controls" for="paragraphs" className={styles.button}>Paragraphs</label>
+            <input 
+              type="radio" 
+              name="lorem-type" 
+              onChange={handleLoremToggle}
+              id="words"
+              value="words" 
+            />
+            <label data-tab-target="#words-controls" for="words" className={styles.button}>Words</label>
+          </div>
 
-            {loremType === 'paragraphs' && <div className={styles.profanityContainer}>
-              <input
-                type="checkbox"
-                id="remove-profanity"
-                className={styles.profanityToggle}
-                name="profanity-toggle"
-                onChange={handleProfanityToggle}
+          <div className="tabs-content">
+            <div id="paragraphs-controls" data-tab-content className={`${styles.paragraphControls} ${styles.active}`}>
+              <input 
+                type="number" 
+                id="number-ipsum" 
+                className={styles.numberInput}
+                onChange={handleNumberInput} 
+                value={numberToGenerate} 
               />
-              <label for="profanity-toggle">Remove Profanity</label>
-            </div> }
-            
-          </div>
 
-          <div id="words-controls" data-tab-content className="words-controls">
+              {loremType === 'paragraphs' && <div className={styles.profanityContainer}>
+                <input
+                  type="checkbox"
+                  id="remove-profanity"
+                  className={styles.profanityToggle}
+                  name="profanity-toggle"
+                  onChange={handleProfanityToggle}
+                />
+                <label for="profanity-toggle">Remove Profanity</label>
+              </div> }
+              
+            </div>
+
+            <div id="words-controls" data-tab-content className="words-controls">
+              <input 
+                type="number" 
+                id="number-ipsum" 
+                className={styles.textInput} 
+                placeholder="paragraphs" 
+                value="3" 
+              />
+            </div>
             <input 
-              type="number" 
-              id="number-ipsum" 
-              className={styles.textInput} 
-              placeholder="paragraphs" 
-              value="3" 
+              type="submit"
+              className={`${styles.generateText} ${styles.button}`} id="generateIpsum"
+              value="Generate Text"
             />
           </div>
-          <input 
-            type="submit"
-            className={`${styles.generateText} ${styles.button}`} id="generateIpsum"
-            value="Generate Text"
-          />
-        </div>
-      </form>
+        </form>
+      </div>
       <section className={styles.outputIpsum} id="output-ipsum">
         <p>{output}</p>
       </section>
     </div>
   );
 }
+
+{/* <section className={styles.outputIpsum} id="output-ipsum">
+  <p>{output}</p>
+</section> */}
 
 {/* <div className="latin-container">
   <input type="checkbox" id="include-latin" name="include-latin-toggle" />
