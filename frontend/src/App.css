@@ -1,5 +1,8 @@
 .App {
-  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
 }
 
 .App-header {
@@ -16,5 +19,11 @@
 }
 
 main {
-  margin: 2rem 0;
+  flex: 1 0 auto;
+}
+
+footer {
+  height: 50px;
+  background: brown;
+  color: white;
 }

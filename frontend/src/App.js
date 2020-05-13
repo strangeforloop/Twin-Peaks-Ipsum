@@ -13,7 +13,7 @@ function App() {
       <div className="App">
         <Nav />
         <main>
-          <Switch>
+          <Switch className="appContent">
             <Route path="/api">
               <API />
             </Route>

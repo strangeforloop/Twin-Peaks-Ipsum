@@ -1,6 +1,11 @@
+nav {
+  background-color: #FFB700;
+  padding: 1.5rem;
+}
+
 .navContent {
   width: 80%;
-  margin: 1rem auto;
+  padding: 1rem auto;
   display: flex;
   list-style: none;
 }
@@ -8,10 +13,10 @@
 .navLink {
   margin-right: 1rem;
   text-decoration: none;
-  padding: 2.5px 6px;
+  padding: 2.8px 6px;
   /* background: yellow; */
-  color: deeppink;
-  font-weight: 500;
+  color: darkviolet;
+  font-weight: 700;
 }
 
 .navLink:hover {

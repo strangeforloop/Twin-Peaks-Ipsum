@@ -1,6 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@900&display=swap');
 /* @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Slab:wght@900&display=swap'); */
 
+.home {
+  /* height: 80vh; */
+  height: 100%;
+  background: green;
+  background: #987BB3;
+}
+
+.leftClouds {
+  position: absolute;
+  width: 30%;
+  left: 0;
+  top: 75px;
+}
+
+.rightClouds {
+  position: absolute;
+  width: 30%;
+  right: 0;
+  top: 55px;
+}
+
 .container {
   width: 80%;
   margin: 0 auto;
@@ -13,8 +34,6 @@
   display: inline-flex;
   justify-content: center;
 }
-
-
 
 .tabs label:first-child {
   /* ???????? note selecting */
@@ -38,25 +57,60 @@ input[type="radio"] + label:last-child  {
 }
 
 /* Heading */
-header {
+.hero {
   text-align: center;
-  margin-bottom: 2rem;
+  background-color: #C8E4E0;
+  height: 50%;
+  position: relative;
+  padding-top: 1.5rem;
 }
 
-header h1 {
+.heroContent {
+  /* width: 100%; */
+  position: relative;
+  height: 100%;
+  /* margin: 0 2rem; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mountains {
+  position: absolute;
+  /* width: 80%; */
+  width: 100%;
+  bottom: 0;
+  /* actually calculate center for left */
+  /* left: 20px; */
+
+  left: 0;
+}
+
+.hero .heroText {
+}
+
+.hero h1 {
   font-family: 'Roboto Slab', serif;
   font-weight: 900;
   text-transform: uppercase;
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   margin-bottom: 0.5rem;
-	text-shadow: -1px 1px 0 lightsalmon,
-				        1px 1px 0 lightsalmon,
-				        1px -1px 0 lightsalmon,
-				       -1px -1px 0 lightsalmon;
+	text-shadow: -1px 1px 0 lightgreen,
+				        1px 1px 0 lightgreen,
+				        1px -1px 0 lightgreen,
+               -1px -1px 0 lightgreen;
+  color: brown;
+  position: relative;
 }
 
-header p {
+.hero .visitorCount {
+  font-style: italic;
+}
+
+.hero p {
+  position: relative;
   font-size: 1.2rem;
+  color: purple;
 }
 
 input[type="radio"] {
@@ -125,11 +179,46 @@ input[type="radio"]:checked + label {
   padding: 0.8rem;
   /* width: 100%; */
   margin: 0 auto;
-  min-height: 300px;
+  min-height: 100px;
   border: 1px solid black;
 }
 
 .outputIpsum p {
   /* because react is weird with new lines */
   white-space: pre-wrap;
+  background-color: lightblue;
 }
+
+/* Media Queries */
+@media (min-width: 768px) {
+  .hero {
+    height: 60%;
+  }
+
+  .heroContent {
+    /* position: relative; */
+    /* height: 100%; */
+    margin: 0 2rem;
+  }
+
+  .mountains {
+    max-height: 100%;
+    /* position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0; */
+  }
+ }
+
+ @media (min-width: 992px) {
+    .hero {
+      height: 65%;
+    }
+
+    .heroContent {
+      /* position: relative; */
+      /* height: 100%; */
+      /* margin: 0 4rem; */
+    }
+ }

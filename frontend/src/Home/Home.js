@@ -100,13 +100,22 @@ const Home = () => {
   }
 
   return (
-    <div className={styles.container}>
-      <header>
-        <h1>Twin Peaks 
-          <span style={{display: 'block'}}>Lorem Ipsum</span>
-        </h1>
-        <p>Vistors: 51,201</p>
-      </header>
+    <div className={styles.home}>
+      <div className={styles.hero}>
+        <img src="/assets/SVG/clouds_left.svg" alt="clouds" className={styles.leftClouds}></img>
+        <img src="/assets/SVG/clouds_right.svg" alt="clouds" className={styles.rightClouds}></img>
+        <div className={styles.heroContent}>
+          <img src="/assets/SVG/mountains.svg" alt="twin peaks mountains" className={styles.mountains}></img>
+          <div className={styles.heroText}>
+            <h1>Twin Peaks
+            <span style={{ display: 'block' }}>Lorem Ipsum</span>
+            </h1>
+            <p className={styles.visitorCount}>Vistors: 51,201</p>
+            <p>The text is not what it seems...
+          </p>
+          </div>
+        </div>
+      </div>
       <form onSubmit={generateText}>
         <div className={styles.tabs}>
           <input 
@@ -166,10 +175,10 @@ const Home = () => {
             value="Generate Text"
           />
         </div>
-        <section className={styles.outputIpsum} id="output-ipsum">
-          <p>{output}</p>
-        </section>
       </form>
+      <section className={styles.outputIpsum} id="output-ipsum">
+        <p>{output}</p>
+      </section>
     </div>
   );
 }
