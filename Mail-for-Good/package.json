@@ -60,7 +60,7 @@
     "geoip-lite": "^1.2.1",
     "handlebars": "^4.0.10",
     "helmet": "^3.6.1",
-    "highcharts": "^5.0.6",
+    "highcharts": "^7.2.2",
     "jquery": "^3.2.1",
     "lodash": "^4.15.0",
     "moment": "^2.18.1",
