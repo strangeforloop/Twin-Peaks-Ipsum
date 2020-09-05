@@ -137,7 +137,7 @@
     "mocha": "^3.2.0",
     "node-amazon-ses-simulator": "^1.0.1",
     "node-mocks-http": "^1.6.2",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.13.1",
     "react-addons-test-utils": "^15.6.0",
     "react-fontawesome": "^1.6.1",
     "redux-immutable-state-invariant": "^2.0.0",
