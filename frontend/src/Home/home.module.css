@@ -43,11 +43,13 @@
 }
 
 .tabs label:first-child {
-  /* ???????? note selecting */
+  /* ???????? not selecting */
   border-radius: 10px 0 0 10px;
 }
 
-input[type="radio"] + label:first-child  {
+input[type="radio"] + label {
+  background-color: white;
+  color: purple;
   border-radius: 10px 0 0 10px;
 }
 
@@ -55,9 +57,6 @@ input[type="radio"] + label:last-child  {
   border-radius: 0 10px 10px 0;
 }
 
-/* .tabs label:last-child {
-  border-radius: 0 10px 10px 0;
-} */
 
 [data-tab-content] {
   display: none;
@@ -138,16 +137,14 @@ form {
     margin: 0 auto;
     /* width: 400px; */
     max-width: 800px;
-    text-align: center;  
+    text-align: center;
 }
 
-input[type="radio"] + label {
-  background-color: white;
-  color: purple;
-}
-
+/* How do I remove the checked status from one thing
+and put it on another one as I handle the input??
+I could do useState, but how does that affect the other checkbox
+ */
 input[type="radio"]:checked + label {
-  background-color: deeppink;
   background-color: #FFB700;
   color: white;
 }
@@ -177,7 +174,7 @@ input[type="radio"]:checked + label {
 
 .button {
   font-size: 1rem;
-  border: 1px solid deeppink;
+  border: 1.3px solid deeppink;
   /* border-left: 0; */
   padding: 8px;
   display: block;
@@ -193,6 +190,7 @@ input[type="radio"]:checked + label {
   background: deeppink;
   background-color: #FFB700;
   color: white;
+  outline: none;
   margin-bottom: 4rem; /* this is a hack ... */
   border-radius: 10px;
 }
@@ -212,6 +210,7 @@ input[type="radio"]:checked + label {
 .outputIpsum p {
   /* because react is weird with new lines */
   border: 1px solid #8F5F00;
+  border-radius: 10px;
   padding: 1rem;
   white-space: pre-wrap;
   background-color: #DEEFEC;
@@ -250,3 +249,7 @@ input[type="radio"]:checked + label {
       /* margin: 0 4rem; */
     }
  }
+
+[data-tab-target] {
+  /* font-size: 40px; */
+}

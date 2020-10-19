@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './home.module.css';
-import { setPriority } from 'os';
+// import { setPriority } from 'os';
 
 const Home = () => {
   const [numberToGenerate, setNumberToGenerate] = useState(3);
@@ -61,6 +61,14 @@ const Home = () => {
   //   outputBox.innerText = output;
   // });
 
+  const generateOutput = (data) => {
+    if (loremType === 'paragraphs') {
+      generateParagraphOutput(data);
+    } else {
+      generateWordOutput(data);
+    }
+  }
+
   const generateParagraphOutput = (data) => {
     let output = '';
     for (let i = 0; i < data.length; i++) {
@@ -71,7 +79,12 @@ const Home = () => {
   }
 
   const generateWordOutput = (data) => {
-    return data;
+    let output = '';
+    for (let i = 0; i < data.length; i++) {
+      output += data[i] + ' ';
+    }
+    console.log(output);
+    setOutput(output);
   }
 
   const handleLoremToggle = (e) => {
@@ -96,7 +109,7 @@ const Home = () => {
     const response = await fetch(`http://localhost:5000/${loremType}/${numberToGenerate}/?profanity=${removeProfanity}`);
     const data = await response.json();
     console.log(data);
-    generateParagraphOutput(data);
+    generateOutput(data);
   }
 
   return (
@@ -112,41 +125,42 @@ const Home = () => {
               <h1>Twin Peaks
               <span style={{ display: 'block' }}>Lorem Ipsum</span>
               </h1>
-              <p className={styles.visitorCount}>Vistors: 51,201</p>
-              <p className={styles.infoText}>The text is not what it seems. Choose between a random selection of dialog from the show or Twin Peaks words.
+              <p className={styles.visitorCount}>Population: 51,201</p>
+              <p className={styles.infoText}>The text is not what it seems. Choose either a random selection of dialog from the show or Twin Peaks words.
             </p>
             </div>
           </div>
         </div>
         <form onSubmit={generateText}>
           <div className={styles.tabs}>
-            <input 
-              type="radio" 
-              name="lorem-type" 
-              onChange={handleLoremToggle} 
-              id="paragraphs" 
+            <input
+              type="radio"
+              name="lorem-type"
+              onChange={handleLoremToggle}
+              id="paragraphs"
               value="paragraphs"
-              checked="checked" 
+              checked={loremType === 'paragraphs'}
             />
             <label data-tab-target="#paragraphs-controls" for="paragraphs" className={styles.button}>Paragraphs</label>
-            <input 
-              type="radio" 
-              name="lorem-type" 
+            <input
+              type="radio"
+              name="lorem-type"
               onChange={handleLoremToggle}
               id="words"
-              value="words" 
+              value="words"
+              checked={loremType === 'words'}
             />
             <label data-tab-target="#words-controls" for="words" className={styles.button}>Words</label>
           </div>
 
           <div className="tabs-content">
             <div id="paragraphs-controls" data-tab-content className={`${styles.paragraphControls} ${styles.active}`}>
-              <input 
-                type="number" 
-                id="number-ipsum" 
+              <input
+                type="number"
+                id="number-ipsum"
                 className={styles.numberInput}
-                onChange={handleNumberInput} 
-                value={numberToGenerate} 
+                onChange={handleNumberInput}
+                value={numberToGenerate}
               />
 
               {loremType === 'paragraphs' && <div className={styles.profanityContainer}>
@@ -159,19 +173,19 @@ const Home = () => {
                 />
                 <label for="profanity-toggle">Remove Profanity</label>
               </div> }
-              
+
             </div>
 
             <div id="words-controls" data-tab-content className="words-controls">
-              <input 
-                type="number" 
-                id="number-ipsum" 
-                className={styles.textInput} 
-                placeholder="paragraphs" 
-                value="3" 
+              <input
+                type="number"
+                id="number-ipsum"
+                className={styles.textInput}
+                placeholder="paragraphs"
+                value="3"
               />
             </div>
-            <input 
+            <input
               type="submit"
               className={`${styles.generateText} ${styles.button}`} id="generateIpsum"
               value="Generate Text"

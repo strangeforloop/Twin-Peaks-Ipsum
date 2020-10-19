@@ -72,14 +72,42 @@ const search = query => {
 
 const getWords = (numberOfWords, profanity) => {
   // return twinpeaksWords[0].content;
-  return 'hi';
+  // twinPeaksWords is an array of objects
+  // get a random index from the array numberOfWords many
+  // times
+  // let wordsArray = [];
+
+  // for (let i = 0; i < numberOfWords; i++) {
+  //   let randomIndex = 0;
+
+  //   // note that this doesn't work because content could
+  //   // have more than one word
+  //   wordsArray.push(twinpeaksWords[randomIndex].content);
+  // }
+
+  let wordsNeeded = numberOfWords;
+  let wordsArray = [];
+
+  while (wordsNeeded > 0) {
+    let randomIndex = Math.floor(Math.random() * twinpeaksWords.length);
+
+    const wordsEntry = twinpeaksWords[randomIndex];
+    const currentNumberOfWords = wordsEntry.wordCount;
+
+    if (currentNumberOfWords <= wordsNeeded) {
+      wordsNeeded-= currentNumberOfWords;
+      wordsArray.push(wordsEntry.content);
+    }
+  }
+
+  return wordsArray;
 }
 
 const getParagraphs = (numberOfParagraphs, profanity) => {
   // initialize an empty array for paragraphs
   // for i to numberOfParagraphs
     // create an empty paragraph
-    // get a random number of sentences between the average 
+    // get a random number of sentences between the average
     // num of sentences per paragraph
     // for i to numberOfSentences
       // append result of getSentence() to current paragraph
@@ -113,7 +141,7 @@ const getSentence = (profanity) => {
   }
 
   const sentence = quote.quoteTextOnly;
-  // console.log('Sentence: ', sentence);
+  // console.log({sentence}});
   return sentence;
 }
 

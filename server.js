@@ -39,30 +39,36 @@ function endpointCreation() {
     //   console.log(`/api/1/quotes?q=${query} endpoint has been called!`);
     // })
 
+    // A dynamic endpoint for paragraphs by number of paragraphs
     app.get('/paragraphs/:numberOfParagraphs', (req, res) => {
+      // If they specify a number of paragraphs, give them that,
+      // If they don't give them the default of 2 paragraphs.
+      // THIS IS BROKEN! Default is actually giving 3, but it says it gives 2.
       const numberOfParagraphs = req.params.numberOfParagraphs || 2;
       const profanity = req.query.profanity;
 
       const paragraphs = getParagraphs(numberOfParagraphs, profanity);
       console.log(paragraphs);
       res.json(paragraphs);
-      // res.json({name: 'anna'});
       console.log(`/paragraphs/${numberOfParagraphs} endpoint has been called!`);
     });
 
     app.get('/words/:numberOfWords', (req, res) => {
       const numberOfWords = req.params.numberOfWords;
+      // There is currently no profanity box for words
       const profanity = req.query.profanity;
-  
-      // const words = getWords(numberOfWords, profanity);
+
+      const words = getWords(numberOfWords, profanity);
+      res.json(words);
       console.log(`/words/${numberOfWords} endpoint has been called!`);
     });
 
-    app.listen(port)
+    app.listen(port);
 
     console.log(
-      `API is listening on ${port}\nEndpoint is ready at: localhost:${port}/api/1/quotes/ \nCheck documentation at: https://github.com/theDavidBarton/twin-peaks-api`
+      `API is listening on ${port}.\n`
     );
+
   } catch (e) {
     console.error(e);
   }
