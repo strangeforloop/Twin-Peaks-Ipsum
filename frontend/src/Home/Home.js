@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styles from './home.module.css';
 // import { setPriority } from 'os';
 
@@ -7,6 +7,7 @@ const Home = () => {
   const [loremType, setLoremType] = useState('paragraphs');
   const [removeProfanity, setRemoveProfanity] = useState(false);
   const [output, setOutput] = useState('');
+  const inputAreaRef = useRef(null);
 
   // const generateTextButton = document.querySelector('#generateIpsum');
   // const tabs = document.querySelectorAll('[data-tab-target]');
@@ -100,13 +101,18 @@ const Home = () => {
     setNumberToGenerate(e.target.value);
   }
 
+  const copyTextToClipboard = (e) => {
+    console.log({inputAreaRef});
+    inputAreaRef.current.select();
+    document.execCommand('copy');
+  }
+
   const generateText =  async (e) => {
     e.preventDefault();
-    console.log('hi');
-    console.log(loremType);
-    console.log(removeProfanity);
-    console.log(numberToGenerate);
-    const response = await fetch(`http://localhost:5000/${loremType}/${numberToGenerate}/?profanity=${removeProfanity}`);
+    // console.log(loremType);
+    // console.log(removeProfanity);
+    // console.log(numberToGenerate);
+    const response = await fetch(`http://localhost:5000/api/${loremType}/${numberToGenerate}/?profanity=${removeProfanity}`);
     const data = await response.json();
     console.log(data);
     generateOutput(data);
@@ -126,7 +132,7 @@ const Home = () => {
               <span style={{ display: 'block' }}>Lorem Ipsum</span>
               </h1>
               <p className={styles.visitorCount}>Population: 51,201</p>
-              <p className={styles.infoText}>The text is not what it seems. Choose either a random selection of dialog from the show or Twin Peaks words.
+              <p className={styles.infoText}>The text is not what it seems. Choose either paragraphs containing dialog from Twin Peaks or words associated with Twin Peaks.
             </p>
             </div>
           </div>
@@ -163,26 +169,31 @@ const Home = () => {
                 value={numberToGenerate}
               />
 
-              {loremType === 'paragraphs' && <div className={styles.profanityContainer}>
-                <input
-                  type="checkbox"
-                  id="remove-profanity"
-                  className={styles.profanityToggle}
-                  name="profanity-toggle"
-                  onChange={handleProfanityToggle}
-                />
-                <label for="profanity-toggle">Remove Profanity</label>
-              </div> }
+              {loremType === 'paragraphs' ?
+                <div className={styles.profanityContainer}>
+                  <input
+                    type="checkbox"
+                    id="remove-profanity"
+                    className={styles.profanityToggle}
+                    name="profanity-toggle"
+                    onChange={handleProfanityToggle}
+                  />
+                  <label for="profanity-toggle">Remove Profanity</label>
+                </div>
+                :
+                <div className={styles.profanityContainer}>
 
+                </div>
+              }
             </div>
 
             <div id="words-controls" data-tab-content className="words-controls">
               <input
                 type="number"
                 id="number-ipsum"
-                className={styles.textInput}
+                className={styles.numberInput }
                 placeholder="paragraphs"
-                value="3"
+                value={numberToGenerate}
               />
             </div>
             <input
@@ -194,7 +205,13 @@ const Home = () => {
         </form>
       </div>
       <section className={styles.outputIpsum} id="output-ipsum">
-        <p>{output}</p>
+        <button onClick={copyTextToClipboard}>
+          Copy
+        </button>
+        <textarea ref={inputAreaRef}
+          placeholder="Select paragraphs or words and how many to generate. Then click the Generate Text button."
+          defaultValue={output}>
+        </textarea>
       </section>
     </div>
   );

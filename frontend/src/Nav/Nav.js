@@ -6,14 +6,9 @@ const Nav = () => {
   return (
     <nav>
       <ul className={styles.navContent}>
-        {/* <li><a href="#"></a>Home</li>
-        <li><a href="#"></a>Api</li>
-        <li><a href="#"></a>Github</li>
-        <li><a href="#"></a>About</li> */}
         <Link className={styles.navLink} to="/">Home</Link>
-        <Link className={styles.navLink} to="/api">API</Link>   
-        <Link className={styles.navLink} to="/github">Github</Link>   
-        <Link className={styles.navLink} to="/about">About</Link>   
+        <Link className={styles.navLink} to="/documentation">Documentation</Link>
+        <a className={styles.navLink} target="_blank" href= "https://github.com/strangeforloop/Twin-Peaks-Lorem-Ipsum">Github</a>
       </ul>
     </nav>
   );

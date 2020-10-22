@@ -70,7 +70,7 @@ const search = query => {
   return personResult;
 }
 
-const getWords = (numberOfWords, profanity) => {
+const getWords = (numberOfWords) => {
   // return twinpeaksWords[0].content;
   // twinPeaksWords is an array of objects
   // get a random index from the array numberOfWords many
@@ -103,7 +103,7 @@ const getWords = (numberOfWords, profanity) => {
   return wordsArray;
 }
 
-const getParagraphs = (numberOfParagraphs, profanity) => {
+const getParagraphs = (numberOfParagraphs, profanity = false) => {
   // initialize an empty array for paragraphs
   // for i to numberOfParagraphs
     // create an empty paragraph

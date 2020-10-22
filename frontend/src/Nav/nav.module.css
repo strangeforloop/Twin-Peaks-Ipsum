@@ -12,11 +12,12 @@ nav {
 
 .navLink {
   margin-right: 1rem;
+  font-size: 1.2rem;
   text-decoration: none;
   padding: 2.8px 6px;
   /* background: yellow; */
   color: darkviolet;
-  font-weight: 700;
+  font-weight: 600;
   -moz-transition: all 0.2s ease-in;
   -o-transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in;
@@ -25,13 +26,20 @@ nav {
 
 .navLink:hover {
   color: #fdec6e;
-  text-shadow:0px 0px 30px #fdec6e;
+  color: white;
+  /* text-shadow: 0px 0px 30px #fdec6e; */
+  text-shadow:
+  -1.1px -1.1px 2px darkviolet,
+   1.1px -1.1px 2px darkviolet,
+   -1.1px 1.1px 2px darkviolet,
+    1.1px 1.1px 2px darkviolet,
+    1px 0px 8px darkviolet;
   -moz-transition: all 0.2s ease-in;
   -o-transition: all 0.2s ease-in;
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
 }
 
-.navLink:visited {
+/* .navLink:visited {
   color: darkviolet;
-}
+} */

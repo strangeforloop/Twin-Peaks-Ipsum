@@ -1,0 +1,54 @@
+.box {
+  background: #EEF1F5;
+  /* background: rgba(45, 170, 219, 0.3); */
+}
+
+.innerContainer {
+  padding: 1rem;
+}
+
+.navTabs {
+  display: flex;
+  list-style: none;
+}
+
+.heading {
+  background: #677788;
+  color: white;
+  padding: 4px;
+  font-weight: 700;
+}
+
+.navItem {
+}
+
+.navLink {
+  padding: 8px;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+}
+
+.navLink.active {
+  background-color: #67768842;
+}
+
+h5 {
+  font-size: 1.1rem;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.prettyPrint {
+  background-color: black;
+  color: white;
+  padding: 8px;
+  /* width: 559px; */
+  max-width: 650px;
+  border-radius: 10px;
+}
+
+.tabContent .active {
+  display: block;
+}

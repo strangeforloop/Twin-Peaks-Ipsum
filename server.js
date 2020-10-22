@@ -3,6 +3,7 @@
 const express = require('express');
 const cors = require('cors');
 const { recommend, getId, search, getParagraphs, getWords } = require('./twinpeaks');
+const path = require('path');
 
 function endpointCreation() {
   try {
@@ -39,28 +40,48 @@ function endpointCreation() {
     //   console.log(`/api/1/quotes?q=${query} endpoint has been called!`);
     // })
 
+    app.use(express.static(path.join(__dirname, 'frontend/build')));
+
     // A dynamic endpoint for paragraphs by number of paragraphs
-    app.get('/paragraphs/:numberOfParagraphs', (req, res) => {
-      // If they specify a number of paragraphs, give them that,
-      // If they don't give them the default of 2 paragraphs.
-      // THIS IS BROKEN! Default is actually giving 3, but it says it gives 2.
-      const numberOfParagraphs = req.params.numberOfParagraphs || 2;
+    app.get('/api/paragraphs/:numberOfParagraphs', (req, res) => {
+      const numberOfParagraphs = req.params.numberOfParagraphs || 3;
       const profanity = req.query.profanity;
 
       const paragraphs = getParagraphs(numberOfParagraphs, profanity);
       console.log(paragraphs);
       res.json(paragraphs);
-      console.log(`/paragraphs/${numberOfParagraphs} endpoint has been called!`);
+      console.log(`/api/paragraphs/${numberOfParagraphs} endpoint has been called!`);
     });
 
-    app.get('/words/:numberOfWords', (req, res) => {
-      const numberOfWords = req.params.numberOfWords;
-      // There is currently no profanity box for words
+    app.get('/api/paragraphs', (req, res) => {
+      const numberOfParagraphs = 3;
       const profanity = req.query.profanity;
 
-      const words = getWords(numberOfWords, profanity);
+      const paragraphs = getParagraphs(numberOfParagraphs);
+      console.log(paragraphs);
+      res.json(paragraphs);
+      console.log(`/api/paragraphs endpoint has been called!`);
+    });
+
+    app.get('/api/words/:numberOfWords', (req, res) => {
+      const numberOfWords = req.params.numberOfWords;
+
+      const words = getWords(numberOfWords);
       res.json(words);
-      console.log(`/words/${numberOfWords} endpoint has been called!`);
+      console.log(`/api/words/${numberOfWords} endpoint has been called!`);
+    });
+
+    app.get('/api/words', (req, res) => {
+      const numberOfWords = 5;
+
+      const words = getWords(numberOfWords);
+      res.json(words);
+      console.log(`/api/words endpoint has been called!`);
+    });
+
+    app.get('*', (req, res) => {
+      console.log('star thingy hit');
+      res.sendFile(path.join(__dirname+'/frontend/public/index.html')); // This is likely incorrect
     });
 
     app.listen(port);
