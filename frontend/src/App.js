@@ -6,6 +6,7 @@ import Documentation from './Documentation/Documentation';
 import About from './About/About';
 import Home from './Home/Home';
 import NotFoundPage from './NotFoundPage/NotFoundPage';
+import Footer from './components/Footer/Footer';
 import './App.css';
 
 function App() {
@@ -32,10 +33,7 @@ function App() {
             </Route>
           </Switch>
         </main>
-        <footer>
-          <p>Every day, once a day, give yourself a present.</p>
-          <p>Developed with ♥ by Anna.</p>
-        </footer>
+        <Footer />
       </div>
     </Router>
   );

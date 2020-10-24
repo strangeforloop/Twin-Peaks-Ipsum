@@ -1,0 +1,36 @@
+.container {
+  /* background: white; */
+  padding: 1rem;
+  background: #ebeff4e0;
+}
+
+.navTabs {
+  display: flex;
+  list-style: none;
+  border-bottom: 1px solid lightgrey;
+}
+
+.navItem {
+  /* padding: 1rem; */
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.navLink {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.navLink:visited {
+  color: inherit;
+}
+
+.navLink.active {
+  background-color: #67768842;
+}
+/*
+.active {
+  background-color: #67768842;
+} */

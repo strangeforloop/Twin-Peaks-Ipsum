@@ -144,10 +144,6 @@ form {
     text-align: center;
 }
 
-/* How do I remove the checked status from one thing
-and put it on another one as I handle the input??
-I could do useState, but how does that affect the other checkbox
- */
 input[type="radio"]:checked + label {
   background-color: #FFB700;
   color: white;
@@ -218,6 +214,7 @@ input[type="radio"]:checked + label {
   position: relative;
   border: 1px solid black;
 }
+
 /*
 .outputIpsum p {
   border: 1px solid #8F5F00;
@@ -256,7 +253,6 @@ input[type="radio"]:checked + label {
   border-radius: 0.25rem;
   color: white;
   padding: .375rem .75rem;
-  /* font-size: 100%; */
   font-size: 0.9rem;
   font-family: inherit;
   border: 0px;

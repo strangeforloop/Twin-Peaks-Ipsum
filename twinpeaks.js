@@ -122,7 +122,7 @@ const getParagraphs = (numberOfParagraphs, profanity = false) => {
     }
     paragraphArray.push(paragraph);
   }
-  // console.log('Paragraph Array: ', paragraphArray);
+
   return paragraphArray;
 }
 

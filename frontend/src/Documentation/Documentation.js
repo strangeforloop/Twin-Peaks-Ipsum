@@ -1,70 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Documentation.module.css';
+import TabNav from "../components/TabNav/TabNav";
+import Tab from "../components/Tab/Tab";
 
-/*
- When you click on the links, add a class of active to the corresponding
- tab-content
- */
+// We can move out each APIrequestExample into their own component that way
+// we don't have to create selected for each one here
 
 const Documentation = () => {
+  const [selectedParagraphExample, setSelectedParagraphExample] = useState("Default");
+  const [selectedWordExample , setSelectedWordExample] = useState("Default");
+
   return (
     <div>
-      <div className={styles.box}>
-        <p className={styles.heading}>API - How to Get Lorem Ipsum By Paragraphs</p>
-        <div className={styles.innerContainer}>
-          <div className="">
-            <ul className={styles.navTabs}>
-              <li className={styles.navItem}>
-                <a className={`${styles.navLink} ${styles.active} ${styles.show}`}>Default</a>
-              </li>
-              <li className={styles.navItem}>
-                {/* <a className="nav-link active show">Specific Paragraph Count</a> */}
-                <a className={styles.navLink}>Specific Paragraph Count</a>
-              </li>
-              <li className={styles.navItem}>
-                {/* <a className="nav-link active show">Profanity Toggle</a> */}
-                <a className={styles.navLink}>Profanity Toggle</a>
-              </li>
-            </ul>
-            <div className={styles.tabContent}>
-              <div>
-                <h5>Lorem Ipsum Paragraphs</h5>
-                <p className={styles.apiDescription}>Get paragraphs of lorem ipsum.</p>
-                <p className={styles.prettyPrint}>GET https://twinpeaksloremipsum.com/api/paragraphs</p>
-              </div>
+      <h3>How to Use the API</h3>
+      <div className={styles.APIrequestExample}>
+        <p className={styles.heading}>API - Get Lorem Ipsum By Paragraphs</p>
+        <TabNav
+          tabs={["Default", "Specific Paragraph Count", "Profanity Toggle"]}
+          selected={selectedParagraphExample}
+          setSelected={setSelectedParagraphExample}
+        >
+          <Tab isSelected={selectedParagraphExample === "Default"}>
+            <div className={styles.info}>
+              <h5>Lorem Ipsum Paragraphs</h5>
+              <p className={styles.apiDescription}>Get paragraphs of lorem ipsum.</p>
+              <p className={styles.prettyPrint}>GET https://twinpeaksloremipsum.com/api/paragraphs</p>
             </div>
-            <div className={styles.tabContent}>
-              <div>
-                <h5>Paragraph Count</h5>
-                <p className={styles.apiDescription}>Get a Specific Number of Lorem Ipsum Paragraphs</p>
-                <p className={styles.prettyPrint}>GET https://twinpeaksloremipsum.com/api/paragraphs/:numberOfParagraphs</p>
-              </div>
+          </Tab>
+          <Tab isSelected={selectedParagraphExample === "Specific Paragraph Count"}>
+            <div className={styles.info}>
+              <h5>Paragraph Count</h5>
+              <p className={styles.apiDescription}>Get a Specific Number of Lorem Ipsum Paragraphs</p>
+              <p className={styles.prettyPrint}>GET https://twinpeaksloremipsum.com/api/paragraphs/:numberOfParagraphs</p>
             </div>
-            <div className={styles.tabContent}>
-              <div>
-                <h5>Profanity Toggle for Lorem Ipsum Paragraphs</h5>
-                <p className={styles.apiDescription}>Toggle the profanity on or off.</p>
-                <p className={styles.prettyPrint}>GET https://twinpeaksloremipsum.com/api/paragraphs/:numberOfParagraphs/?profanity=true</p>
-              </div>
+          </Tab>
+          <Tab isSelected={selectedParagraphExample === "Profanity Toggle"}>
+            <div className={styles.info}>
+              <h5>Profanity Toggle for Lorem Ipsum Paragraphs</h5>
+              <p className={styles.apiDescription}>Toggle the profanity on or off.</p>
+              <p className={styles.prettyPrint}>GET https://twinpeaksloremipsum.com/api/paragraphs/:numberOfParagraphs/?profanity=true</p>
             </div>
-          </div>
-        </div>
+          </Tab>
+        </TabNav>
       </div>
 
-      <br></br>
-
-{/* put these boxes into a separate component */}
-      {/* <div className="box">
-        <div className="requestExample">
-          <p className="heading">API - How to Get Lorem Ipsum by Words</p>
-          <div>
-            <ul className="nav-tabs">
-              <li className="nav-item">Default</li>
-              <li className="nav-item">Specify Word Count</li>
-            </ul>
+      <div className={styles.APIrequestExample}>
+      <p className={styles.heading}>API - Get Lorem Ipsum By Words</p>
+      <TabNav
+        tabs={["Default", "Specific Word Count"]}
+        selected={selectedWordExample}
+        setSelected={setSelectedWordExample}
+      >
+        <Tab isSelected={selectedWordExample === "Default"}>
+          <div className={styles.info}>
+            <h5>Lorem Ipsum Paragraphs</h5>
+            <p className={styles.apiDescription}>Get paragraphs of lorem ipsum.</p>
+            <p className={styles.prettyPrint}>GET https://twinpeaksloremipsum.com/api/words</p>
           </div>
-        </div>
-      </div> */}
+        </Tab>
+        <Tab isSelected={selectedWordExample === "Specific Word Count"}>
+          <div>
+            <h5>Paragraph Count</h5>
+            <p className={styles.apiDescription}>Get a Specific Number of Lorem Ipsum Paragraphs</p>
+            <p className={styles.prettyPrint}>GET https://twinpeaksloremipsum.com/api/words/:numberOfWords</p>
+          </div>
+        </Tab>
+      </TabNav>
+      </div>
+
     </div>
   );
 }
