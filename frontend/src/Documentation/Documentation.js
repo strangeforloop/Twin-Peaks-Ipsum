@@ -11,7 +11,7 @@ const Documentation = () => {
   const [selectedWordExample , setSelectedWordExample] = useState("Default");
 
   return (
-    <div>
+    <div className={styles.documentation}>
       <h3>How to Use the API</h3>
       <div className={styles.APIrequestExample}>
         <p className={styles.heading}>API - Get Lorem Ipsum By Paragraphs</p>

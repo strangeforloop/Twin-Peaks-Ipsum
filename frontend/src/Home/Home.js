@@ -120,7 +120,6 @@ const Home = () => {
 
   return (
     <div className={styles.page}>
-    {/* I want the home box to not grow */}
       <div className={styles.home}>
         <div className={styles.hero}>
           <img src="/assets/SVG/clouds_left.svg" alt="clouds" className={styles.leftClouds}></img>
@@ -198,18 +197,19 @@ const Home = () => {
             </div>
             <input
               type="submit"
-              className={`${styles.generateText} ${styles.button}`} id="generateIpsum"
+              className={`${styles.generateTextButton} ${styles.button}`} id="generateIpsum"
               value="Generate Text"
             />
           </div>
         </form>
       </div>
-      <section className={styles.outputIpsum} id="output-ipsum">
+
+      <section className={`${styles.outputIpsum} ${styles.container}`} id="output-ipsum">
         <button onClick={copyTextToClipboard}>
           Copy
         </button>
         <textarea ref={inputAreaRef}
-          placeholder="Select paragraphs or words and how many to generate. Then click the Generate Text button."
+          placeholder="Select Paragraphs or Words and how many to generate. Then click the Generate Text button."
           defaultValue={output}>
         </textarea>
       </section>

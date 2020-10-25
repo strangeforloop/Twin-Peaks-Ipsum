@@ -1,3 +1,8 @@
+.documentation {
+  width: 80%;
+  margin: auto;
+}
+
 h3 {
   padding: 1rem 1rem 0.5rem;
 }
@@ -18,13 +23,12 @@ h3 {
   /* width: 559px; */
   max-width: 650px;
   border-radius: 10px;
-  margin-bottom: 1rem;
 }
 
 .heading {
   background: #677788;
   color: white;
-  padding: 4px;
+  padding: 6px;
   font-weight: 700;
 }
 

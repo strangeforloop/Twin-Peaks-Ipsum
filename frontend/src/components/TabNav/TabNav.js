@@ -9,7 +9,7 @@ export default function TabNav(props) {
           const active = tab === props.selected ? styles.active : "";
 
           return (
-            <li className={ `${styles.navItem} `} key={tab}>
+            <li className={ `${styles.navItem} ${active}`} key={tab}>
               <a
                 href="#"
                 className={` ${styles.navLink} ${active}` }

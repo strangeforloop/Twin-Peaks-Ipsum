@@ -1,21 +1,23 @@
 nav {
   background-color: #FFB700;
   padding: 1.5rem;
+  padding: 24px;
 }
 
 .navContent {
-  /* width: 80%; */
-  padding: 1rem auto;
+  width: 80%;
+  margin: auto;
   display: flex;
   list-style: none;
+  justify-content: center;
 }
 
 .navLink {
-  margin-right: 1rem;
+  /* margin-right: 1rem; */
   font-size: 1.2rem;
   text-decoration: none;
-  padding: 2.8px 6px;
-  /* background: yellow; */
+  /* padding: 2.8px 6px; */
+  padding: 2.8px 0.9rem;
   color: darkviolet;
   font-weight: 600;
   -moz-transition: all 0.2s ease-in;
@@ -43,3 +45,25 @@ nav {
 /* .navLink:visited {
   color: darkviolet;
 } */
+
+@media (min-width: 640px) {
+  nav {
+    padding: 0.6rem;
+  }
+
+  .navLink {
+    padding: 2.8px 0.7rem;
+    margin: 1rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .navContent {
+    justify-content: left;
+  }
+
+  .navLink {
+    padding: 2.8px 0.9rem;
+  }
+}
+

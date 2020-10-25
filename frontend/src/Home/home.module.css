@@ -2,17 +2,16 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Slab:wght@900&display=swap'); */
 
 .page {
-  height: 100%;
+  /* height: 100%; */
   display: flex;
   flex-direction: column;
+  background: #987BB3;
 }
 
 .home {
   /* height: 80vh; */
   height: 90%;
-  background: green;
-  background: #987BB3;
-  flex: 0;
+  /* flex: 0; */
 }
 
 .leftClouds {
@@ -32,12 +31,12 @@
 .container {
   width: 80%;
   margin: 0 auto;
-  text-align: center;
+  /* text-align: center; */
 }
 
 /* Tabs */
 .tabs {
-  margin: 1rem 0;
+  margin-bottom: 1rem;
   display: inline-flex;
   justify-content: center;
 }
@@ -116,8 +115,9 @@ input[type="radio"] + label:last-child  {
 
 .hero .infoText {
   margin: 0 auto;
+  margin-bottom: 1rem;
   width: 70%;
-  max-width: 60%;
+  /* max-width: 60%; */
   /* background: peachpuff; */
   /* opacity: 0.5; */
   /* padding: 0.5rem; */
@@ -130,6 +130,7 @@ input[type="radio"] + label:last-child  {
   position: relative;
   font-size: 1.3rem;
   color: purple;
+  margin-bottom: 0.5rem;
 }
 
 input[type="radio"] {
@@ -138,7 +139,8 @@ input[type="radio"] {
 }
 
 form {
-    margin: 0 auto;
+    margin: 1rem auto 1.5rem;
+    /* margin-top: 1rem; */
     /* width: 400px; */
     max-width: 800px;
     text-align: center;
@@ -178,27 +180,26 @@ input[type="radio"]:checked + label {
 .button {
   font-weight: 600;
   font-size: 1rem;
-  /* border: none; */
   border: 1.3px solid deeppink;
-  /* border-left: 0; */
   padding: 8px;
   display: block;
   text-align: center;
   width: 170px;
-  /* color: deeppink; */
   background-color: #FFB700;
   cursor: pointer;
+  letter-spacing: 0.8px;
 }
 
-.generateText {
+.generateTextButton {
   display: inline-block;
-  background: deeppink;
   background-color: #FFB700;
   color: white;
   outline: none;
-  margin-bottom: 4rem; /* this is a hack ... */
+  /* this is a hack ... */
+  /* margin-bottom: 4rem;  */
   border-radius: 10px;
-  width: 200px
+  width: 200px;
+  font-size: 1.1rem;
 }
 
 /* Output */
@@ -207,12 +208,10 @@ input[type="radio"]:checked + label {
   padding: 0 1.5rem;
   /* width: 100%; */
   /* margin: 0 auto; */
-  min-height: 100px;
-  /* border: 1px solid black; */
-  background-color: #987BB3;
+  /* min-height: 100px; */
   flex: 1;
   position: relative;
-  border: 1px solid black;
+  margin-bottom: 1rem;
 }
 
 /*
@@ -228,7 +227,6 @@ input[type="radio"]:checked + label {
   font-size: 1rem;
   line-height: 32px;
   border: 1px solid #8F5F00;
-  /* border: none; */
   border-radius: 10px;
   padding: 2rem 1.5rem;
   white-space: pre-wrap;
@@ -236,9 +234,20 @@ input[type="radio"]:checked + label {
   width: 100%;
   overflow-y: auto;
   /* overflow-y: scroll; */
-  height: 200px;
+  height: 250px;
   resize: none;
   font-family: inherit;
+}
+
+textarea ::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+
+textarea ::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, .5);
+  box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }
 
 .outputIpsum button {
@@ -265,8 +274,13 @@ input[type="radio"]:checked + label {
 
 /* Media Queries */
 @media (min-width: 768px) {
+
   .hero {
-    height: 60%;
+    height: 70%;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
   }
 
   .heroContent {
@@ -283,17 +297,33 @@ input[type="radio"]:checked + label {
     left: 0;
     right: 0; */
   }
+
+  .hero .infoText {
+    width: 45%;
+    line-height: 30px;
+    padding: 1rem;
+  }
+
+  .generateTextButton {
+    padding: 10px;
+    width: 200px;
+  }
  }
 
  @media (min-width: 992px) {
     .hero {
-      height: 65%;
+      /* height: 65%; */
     }
 
     .heroContent {
       /* position: relative; */
       /* height: 100%; */
       /* margin: 0 4rem; */
+    }
+
+    .outputIpsum textarea {
+      padding-left: 3rem;
+      padding-right: 3rem;
     }
  }
 
