@@ -22,7 +22,7 @@ const Home = () => {
     for (let i = 0; i < data.length; i++) {
       output += data[i] + '\n\n';
     }
-    console.log(output);
+
     setOutput(output);
   }
 
@@ -31,12 +31,11 @@ const Home = () => {
     for (let i = 0; i < data.length; i++) {
       output += data[i] + ' ';
     }
-    console.log(output);
+
     setOutput(output);
   }
 
   const handleLoremToggle = (e) => {
-    console.log(e.target.value);
     setLoremType(e.target.value);
   }
 
@@ -49,7 +48,6 @@ const Home = () => {
   }
 
   const copyTextToClipboard = (e) => {
-    console.log({inputAreaRef});
     inputAreaRef.current.select();
     document.execCommand('copy');
   }
@@ -58,7 +56,7 @@ const Home = () => {
     e.preventDefault();
     const response = await fetch(`https://twin-peaks-lorem-ipsum.herokuapp.com/api/${loremType}/${numberToGenerate}/?profanity=${removeProfanity}`);
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     generateOutput(data);
   }
 
