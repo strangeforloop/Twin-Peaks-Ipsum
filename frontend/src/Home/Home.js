@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import styles from './home.module.css';
-// import { setPriority } from 'os';
 
 const Home = () => {
   const [numberToGenerate, setNumberToGenerate] = useState(3);
