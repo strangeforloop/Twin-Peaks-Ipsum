@@ -160,30 +160,32 @@ const Home = () => {
 
           <div className="tabs-content">
             <div id="paragraphs-controls" data-tab-content className={`${styles.paragraphControls} ${styles.active}`}>
-              <input
-                type="number"
-                id="number-ipsum"
-                className={styles.numberInput}
-                onChange={handleNumberInput}
-                value={numberToGenerate}
-              />
+              <div className={styles.test}>
+                <input
+                  type="number"
+                  id="number-ipsum"
+                  className={styles.numberInput}
+                  onChange={handleNumberInput}
+                  value={numberToGenerate}
+                />
 
-              {loremType === 'paragraphs' ?
-                <div className={styles.profanityContainer}>
-                  <input
-                    type="checkbox"
-                    id="remove-profanity"
-                    className={styles.profanityToggle}
-                    name="profanity-toggle"
-                    onChange={handleProfanityToggle}
-                  />
-                  <label for="profanity-toggle">Remove Profanity</label>
-                </div>
-                :
-                <div className={styles.profanityContainer}>
+                {loremType === 'paragraphs' ?
+                  <div className={styles.profanityContainer}>
+                    <input
+                      type="checkbox"
+                      id="remove-profanity"
+                      className={styles.profanityToggle}
+                      name="profanity-toggle"
+                      onChange={handleProfanityToggle}
+                    />
+                    <label for="profanity-toggle">Remove Profanity</label>
+                  </div>
+                  :
+                  <div className={styles.profanityContainer}>
+                  </div>
+                }
+              </div>
 
-                </div>
-              }
             </div>
 
             <div id="words-controls" data-tab-content className="words-controls">
@@ -216,14 +218,5 @@ const Home = () => {
     </div>
   );
 }
-
-{/* <section className={styles.outputIpsum} id="output-ipsum">
-  <p>{output}</p>
-</section> */}
-
-{/* <div className="latin-container">
-  <input type="checkbox" id="include-latin" name="include-latin-toggle" />
-  <label for="include-latin-toggle" className="left">Start with "Twin Peaks ipsum dolor sit amet"</label>
-</div> */}
 
 export default Home;

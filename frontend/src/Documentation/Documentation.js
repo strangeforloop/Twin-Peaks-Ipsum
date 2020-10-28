@@ -3,9 +3,6 @@ import styles from './Documentation.module.css';
 import TabNav from "../components/TabNav/TabNav";
 import Tab from "../components/Tab/Tab";
 
-// We can move out each APIrequestExample into their own component that way
-// we don't have to create selected for each one here
-
 const Documentation = () => {
   const [selectedParagraphExample, setSelectedParagraphExample] = useState("Default");
   const [selectedWordExample , setSelectedWordExample] = useState("Default");

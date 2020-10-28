@@ -8,7 +8,7 @@ const Nav = () => {
       <ul className={styles.navContent}>
         <Link className={styles.navLink} to="/">Home</Link>
         <Link className={styles.navLink} to="/documentation">Documentation</Link>
-        <a className={styles.navLink} target="_blank" href= "https://github.com/strangeforloop/Twin-Peaks-Lorem-Ipsum">Github</a>
+        <a className={styles.navLink} target="_blank" rel="noopener noreferrer" href= "https://github.com/strangeforloop/Twin-Peaks-Lorem-Ipsum">Github</a>
       </ul>
     </nav>
   );

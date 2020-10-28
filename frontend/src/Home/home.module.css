@@ -36,7 +36,7 @@
 
 /* Tabs */
 .tabs {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   display: inline-flex;
   justify-content: center;
 }
@@ -111,9 +111,11 @@ input[type="radio"] + label:last-child  {
 
 .hero .visitorCount {
   font-style: italic;
+  font-size: 1.2rem;
 }
 
 .hero .infoText {
+  font-size: 1.2rem;
   margin: 0 auto;
   margin-bottom: 1rem;
   width: 70%;
@@ -123,8 +125,12 @@ input[type="radio"] + label:last-child  {
   /* padding: 0.5rem; */
   background: rgba(255, 255, 255, 0.4);
   border-radius: 10px;
-  padding: 0.5rem;
+  padding: 0.5rem 0.6rem;
 }
+/*
+.test {
+  display: flex;
+} */
 
 .hero p {
   position: relative;
@@ -139,7 +145,7 @@ input[type="radio"] {
 }
 
 form {
-    margin: 1rem auto 1.5rem;
+    margin: 1rem auto;
     /* margin-top: 1rem; */
     /* width: 400px; */
     max-width: 800px;
@@ -149,6 +155,7 @@ form {
 input[type="radio"]:checked + label {
   background-color: #FFB700;
   color: white;
+  color: #083c38;
 }
 
 .active[data-tab-content] {
@@ -159,6 +166,7 @@ input[type="radio"]:checked + label {
   padding: 9px;
   margin-bottom: 0.5rem;
   border-radius: 10px;
+  max-width: 55px;
   border: none;
 }
 
@@ -187,19 +195,21 @@ input[type="radio"]:checked + label {
   width: 170px;
   background-color: #FFB700;
   cursor: pointer;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.7px;
 }
 
 .generateTextButton {
   display: inline-block;
   background-color: #FFB700;
-  color: white;
+  color: #083c38;
   outline: none;
   /* this is a hack ... */
   /* margin-bottom: 4rem;  */
   border-radius: 10px;
   width: 200px;
   font-size: 1.1rem;
+  font-size: inherit;
+  font-family: inherit;
 }
 
 /* Output */
@@ -312,7 +322,7 @@ textarea ::-webkit-scrollbar-thumb {
 
  @media (min-width: 992px) {
     .hero {
-      /* height: 65%; */
+      padding-top: 2.6rem;
     }
 
     .heroContent {

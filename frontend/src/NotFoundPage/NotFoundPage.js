@@ -1,11 +1,15 @@
 import React from 'react';
-import { owlImage } from './owlPicture.jpg';
 
 const NotFoundPage = () => {
   return (
-    <div>
+    <div style={
+      { 'display': 'flex',
+      'flexDirection': 'column',
+      'alignItems': 'center',
+      'margin-top': '10%'
+      }}>
+      <h1>404</h1>
       <div>This page is not as it seems...</div>
-      <img src={ owlImage }></img>
     </div>
   );
 }
