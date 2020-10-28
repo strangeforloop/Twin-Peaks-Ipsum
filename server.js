@@ -11,35 +11,6 @@ function endpointCreation() {
     app.use(cors());
     const port = process.env.PORT || 5000;
 
-    // // providing endpoint for **random** quotes
-    // app.get('/api/1/quotes/recommend', (req, res) => {
-    //     const recommendedResult = recommend(req.query.profanity, req.query.relevance);
-    //   recommendedResult[0] ? res.json(recommendedResult) : res.status(404).json({ error: 'no such id!' }); // this condition won't be applied, error handling happens in randomizer()
-    //   console.log(
-    //     `/api/1/quotes/recommend?profanity=${req.query.profanity ? req.query.profanity : 'true,false'}&relevance=${
-    //       req.query.relevance ? req.query.relevance : '1,2,3'
-    //     } endpoint has been called!`
-    //   );
-    // })
-
-    // // providing a dynamic endpoint for quotes by ID
-    // app.get('/api/1/quotes/:id', (req, res) => {
-    //   const id = req.params.id;
-    //   const idResult = getId(id);
-    //   // console.log('id ', id);
-    //   // console.log('idResult', idResult);
-    //   idResult[0] ? res.json(idResult) : res.status(404).json({ error: 'no such id!' });
-    //   console.log(`/api/1/quotes/${id} endpoint has been called!`);
-    // })
-
-    // // providing a dynamic endpoint for searches
-    // app.get('/api/quotes', (req, res) => {
-    //   const query = req.query.q;
-    //   const personResult = search(query);
-    //   res.json(personResult);
-    //   console.log(`/api/1/quotes?q=${query} endpoint has been called!`);
-    // })
-
     app.use(express.static(path.join(__dirname, 'frontend/build')));
 
     // A dynamic endpoint for paragraphs by number of paragraphs
@@ -81,7 +52,8 @@ function endpointCreation() {
 
     app.get('*', (req, res) => {
       console.log('star thingy hit');
-      res.sendFile(path.join(__dirname+'/frontend/public/index.html')); // This is likely incorrect
+      // res.sendFile(path.join(__dirname+'/frontend/public/index.html')); // This is likely incorrect
+      res.sendFile(path.join(__dirname+'/frontend/build/index.html'));
     });
 
     app.listen(port);

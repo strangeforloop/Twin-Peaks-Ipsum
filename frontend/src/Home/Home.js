@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import styles from './home.module.css';
-// import { setPriority } from 'os';
 
 const Home = () => {
   const [numberToGenerate, setNumberToGenerate] = useState(3);
@@ -8,59 +7,6 @@ const Home = () => {
   const [removeProfanity, setRemoveProfanity] = useState(false);
   const [output, setOutput] = useState('');
   const inputAreaRef = useRef(null);
-
-  // const generateTextButton = document.querySelector('#generateIpsum');
-  // const tabs = document.querySelectorAll('[data-tab-target]');
-  // const tabContents = document.querySelectorAll('[data-tab-content]');
-
-  // // check if this works
-  // tabs.forEach(tab => {
-  //   tab.addEventListener('click', () => {
-  //     const target = document.querySelector(tab.dataset.tabTarget);
-  //     tabContents.forEach(tabContent => {
-  //       tabContent.classList.remove('active');
-  //     });
-  //     target.classList.add('active');
-  //   });
-  // });
-
-  // const getRadioValue = () => {
-  //   const loremRadioButtons = document.getElementsByName('lorem-type');
-
-  //   console.log(loremRadioButtons);
-  //   for (let i = 0; loremRadioButtons.length; i++) {
-  //     if (loremRadioButtons[i].checked) {
-  //       return loremRadioButtons[i].value;
-  //     }
-  //   }
-  // }
-
-  // generateTextButton.addEventListener('click', async () => {
-  //   const loremTypeToGenerate = getRadioValue();
-  //   const numberToGenerate = document.getElementById('number-ipsum').value;
-  //   // move this into just the call for paragraphs
-  //   const removeProfanity = document.getElementById('remove-profanity').checked;
-  //   // const startWithLatin = document.getElementById('include-latin').checked;
-  //   const outputBox = document.getElementById('output-ipsum');
-
-  //   const response = await fetch(`http://localhost:5000/${loremTypeToGenerate}/${numberToGenerate}/?profanity=${removeProfanity}`);
-  //   const data = await response.json();
-  //   console.log(data);
-
-  //   let output = '';
-
-  //   // if (startWithLatin) {
-  //   //   output += "Twin peaks ipsum dolor sit amet ";
-  //   // }
-
-  //   if (loremTypeToGenerate === 'paragraphs') {
-  //     output += generateParagraphOutput(data);
-  //   } else if (loremTypeToGenerate === 'words') {
-  //     output += generateWordOutput(data);
-  //   }
-
-  //   outputBox.innerText = output;
-  // });
 
   const generateOutput = (data) => {
     if (loremType === 'paragraphs') {
@@ -109,10 +55,7 @@ const Home = () => {
 
   const generateText =  async (e) => {
     e.preventDefault();
-    // console.log(loremType);
-    // console.log(removeProfanity);
-    // console.log(numberToGenerate);
-    const response = await fetch(`http://localhost:5000/api/${loremType}/${numberToGenerate}/?profanity=${removeProfanity}`);
+    const response = await fetch(`https://twin-peaks-lorem-ipsum.herokuapp.com/api/${loremType}/${numberToGenerate}/?profanity=${removeProfanity}`);
     const data = await response.json();
     console.log(data);
     generateOutput(data);

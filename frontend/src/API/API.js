@@ -7,14 +7,14 @@ const API = () => {
 
   useEffect(() => {
     const makeRequest = async () => {
-      const response = await fetch(`http://localhost:5000/api/${loremType}/${number}`);
+      const response = await fetch(`https://twin-peaks-lorem-ipsum.herokuapp.com/${loremType}/${number}`);
       console.log({response});
       const data = await response.json();
       setResult(data);
     };
 
     const makeDefaultRequest = async () => {
-      const response = await fetch(`http://localhost:5000/api/${loremType}`);
+      const response = await fetch(`https://twin-peaks-lorem-ipsum.herokuapp.com/${loremType}`);
       console.log({response});
       const data = await response.json();
       setResult(data);
