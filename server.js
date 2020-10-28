@@ -11,7 +11,7 @@ function endpointCreation() {
     app.use(cors());
     const port = process.env.PORT || 5000;
 
-    app.use(express.static(path.join(__dirname, 'frontend/build')));
+    app.use(express.static(path.join(__dirname, '/build')));
 
     // A dynamic endpoint for paragraphs by number of paragraphs
     app.get('/api/paragraphs/:numberOfParagraphs', (req, res) => {
@@ -53,7 +53,7 @@ function endpointCreation() {
     app.get('*', (req, res) => {
       console.log('star thingy hit');
       // res.sendFile(path.join(__dirname+'/frontend/public/index.html')); // This is likely incorrect
-      res.sendFile(path.join(__dirname+'/frontend/build/index.html'));
+      res.sendFile(path.join(__dirname + '/build/index.html'));
     });
 
     app.listen(port);

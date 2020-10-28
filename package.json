@@ -8,6 +8,7 @@
     "express": "^4.17.1"
   },
   "scripts": {
+    "build": "cd frontend && npm run build",
     "start": "node server.js",
     "scrape": "node quoteCollector.js",
     "how-much-is-the-fish": "heroku ps -a twin-peaks-api"
