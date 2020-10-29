@@ -69,7 +69,7 @@ const Home = () => {
             <img src="/assets/SVG/mountains.svg" alt="twin peaks mountains" className={styles.mountains}></img>
             <div className={styles.heroText}>
               <h1>Twin Peaks
-              <span style={{ display: 'block' }}>Lorem Ipsum</span>
+              <span style={{ display: 'block' }}>Ipsum</span>
               </h1>
               <p className={styles.visitorCount}>Population: 51,201</p>
               <p className={styles.infoText}>The text is not what it seems. Choose either paragraphs containing dialog from Twin Peaks or words associated with Twin Peaks.
