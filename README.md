@@ -6,8 +6,8 @@ This project has a public-facing API and a corresponding front end website. Pupp
 
 # Table of Contents
 1. [Installation](#installation)
-2. [HTTP API Examples](#http-api)
-3. [Technologies Used](#example)
+2. [HTTP API Examples](#http-api-examples)
+3. [Technologies Used](#technologies-used)
 
 ## Installation
 To run a local copy, run the following commands: 
