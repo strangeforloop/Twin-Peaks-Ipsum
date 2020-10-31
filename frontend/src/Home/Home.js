@@ -119,7 +119,7 @@ const Home = () => {
                       name="profanity-toggle"
                       onChange={handleProfanityToggle}
                     />
-                    <label for="profanity-toggle">Remove Profanity</label>
+                    <label for="profanity-toggle">Include Profanity</label>
                   </div>
                   :
                   <div className={styles.profanityContainer}>

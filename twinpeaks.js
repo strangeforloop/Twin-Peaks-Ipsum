@@ -20,14 +20,11 @@ const randomizer = quotesArray => {
   let randomInteger = randomizeNumberBetweenZeroAnd(quotesLength);
 
   while (!availableIds.includes(randomInteger)) {
-    // console.log(`${randomInteger} is not among ${availableIds}`)
     randomInteger = randomizeNumberBetweenZeroAnd(quotesLength);
   }
 
   return randomInteger;
 }
-
-// recommend a quote randomly
 
 /*
  * @param {string [and NOT boolean!]} profanity: (optional) filter criteria (true|false|true,false)
@@ -71,20 +68,6 @@ const search = query => {
 }
 
 const getWords = (numberOfWords) => {
-  // return twinpeaksWords[0].content;
-  // twinPeaksWords is an array of objects
-  // get a random index from the array numberOfWords many
-  // times
-  // let wordsArray = [];
-
-  // for (let i = 0; i < numberOfWords; i++) {
-  //   let randomIndex = 0;
-
-  //   // note that this doesn't work because content could
-  //   // have more than one word
-  //   wordsArray.push(twinpeaksWords[randomIndex].content);
-  // }
-
   let wordsNeeded = numberOfWords;
   let wordsArray = [];
 
@@ -104,20 +87,12 @@ const getWords = (numberOfWords) => {
 }
 
 const getParagraphs = (numberOfParagraphs, profanity = false) => {
-  // initialize an empty array for paragraphs
-  // for i to numberOfParagraphs
-    // create an empty paragraph
-    // get a random number of sentences between the average
-    // num of sentences per paragraph
-    // for i to numberOfSentences
-      // append result of getSentence() to current paragraph
   let paragraphArray = [];
 
   for (let i = 0; i < numberOfParagraphs; i++) {
     let paragraph = '';
     const numOfSentences = Math.floor((Math.random() * (14 - 8)) + 8);;
     for (let i = 0; i < numOfSentences; i++) {
-      // replace w template literals
       paragraph += getSentence(profanity) + ' ';
     }
     paragraphArray.push(paragraph);
@@ -131,9 +106,7 @@ const getSentence = (profanity) => {
   let randomIndex = Math.floor((Math.random() * (twinpeaksQuotesArray.length - 0)) + 0);
   let quote = twinpeaks.quotes[randomIndex];
 
-  // console.log(profanity);
   if (!profanity) {
-    // console.log('hey');
     while (quote.profanity) {
       randomIndex = Math.floor((Math.random() * (twinpeaksQuotesArray.length - 0)) + 0);
       quote = twinpeaks.quotes[randomIndex];
@@ -141,7 +114,6 @@ const getSentence = (profanity) => {
   }
 
   const sentence = quote.quoteTextOnly;
-  // console.log({sentence}});
   return sentence;
 }
 

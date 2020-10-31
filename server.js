@@ -52,7 +52,7 @@ function endpointCreation() {
 
     app.get('*', (req, res) => {
       console.log('star thingy hit');
-      // res.sendFile(path.join(__dirname+'/frontend/public/index.html')); // This is likely incorrect
+      // res.sendFile(path.join(__dirname+'/frontend/public/index.html'));
       res.sendFile(path.join(__dirname + '/build/index.html'));
     });
 
