@@ -22,7 +22,7 @@ An API is available which will provide a string of either words or paragraphs.
 
 **Usage example**:
 </br>
-To generate the 2 paragraphs, make a request at `https://twinpeaksloremipsum.com/api/paragraphs/2`.
+To generate the 2 paragraphs, make a request at `http://twinpeaksloremipsum.com/api/paragraphs/2`.
 
 ## Technologies Used
 * React
