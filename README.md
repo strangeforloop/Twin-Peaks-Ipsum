@@ -1,6 +1,6 @@
 This project can be viewed at http://www.twinpeaksipsum.com/.
 
-Twin Peak Ipsum is a lorem ipsum alternative that allows fans of the TV show to generate the desired amount of copy text for their projects.
+Twin Peak Ipsum is a lorem ipsum alternative that allows fans of the TV show Twin Peaks to generate the desired amount of copy text for their projects.
 
 This project has a public-facing API and a corresponding front end website. Puppeteer was used for scraping the web for the show dialog used in this project. The illustration and design was created by me in Adobe Illustrator.
 
